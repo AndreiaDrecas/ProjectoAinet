@@ -53,7 +53,7 @@
                     <li>
                         <form class="navbar-form navbar-left" role="search">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search">
+                                <input type="text" class="form-control" placeholder="Search Product">
                             </div>
                                 <button type="search" class="btn btn-default">Search</button>
                         </form>

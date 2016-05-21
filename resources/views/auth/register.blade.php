@@ -65,6 +65,43 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Location</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="name" value="{{ old('location') }}">
+
+                                @if ($errors->has('location'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                           <div class="form-group">
+                            <label class="col-md-4 control-label">Profile URL</label>
+                             <div class="col-md-6">
+                             
+                            <div class="input-group">
+                              <span class="input-group-addon" id="basic-addon3">mypersonalpage.com</span>
+                              <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                            </div>
+                             </div>
+                            </div>
+
+                             <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Presentation</label>
+
+                            <div class="col-md-6">
+                                <textarea class="form-control" style="min-width: 100%"></textarea>
+                                @if ($errors->has('location'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
