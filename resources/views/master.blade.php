@@ -51,6 +51,9 @@
                         <a href="/login">Login</a>
                     </li>
                     <li>
+                        <a href="/register">Register</a>
+                    </li>
+                    <li>
                         <form class="navbar-form navbar-left" role="search">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Search Product">
@@ -65,38 +68,9 @@
         <!-- /.container -->
     </nav>
 
-
+@yield('main_content')
     <!-- Header -->
-    <a name="about"></a>
-    <div class="intro-header">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="intro-message">
-                        <h1>Urban's Farmers' Market</h1>
-                         <hr class="intro-divider">
-                           <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Location<span class="caret"></span>
-                            </button>
-                             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Recent Products<span class="caret"></span>
-                            </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                    <span> <li><a href="#">Action</a></li></span>
-                                        <li><a href="#">Another action</a></li>
-                                        <li><a href="#">Something else here</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#">Separated link</a></li>
-                                </ul>
-                            </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <!-- /.container -->
-
-    </div>
+    
     <!-- /.intro-header -->
 
     <!-- Page Content -->
@@ -104,20 +78,7 @@
 	<a  name="services"></a>
     <div class="content-section-a">
 
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 col-sm-6">
-                    <hr class="section-heading-spacer">
-                    <div class="clearfix"></div>
-                    <h2 class="section-heading">Death to the Stock Photo:<br>Special Thanks</h2>
-                    <p class="lead">A special thanks to <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a> for providing the photographs that you see in this template. Visit their website to become a member.</p>
-                </div>
-                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="img/ipad.png" alt="">
-                </div>
-            </div>
-
-        </div>
+        
         <!-- /.container -->
 
     </div>
