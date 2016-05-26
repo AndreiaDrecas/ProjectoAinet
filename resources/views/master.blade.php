@@ -74,9 +74,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-message">
-                        <h1>Urban's Farmers' Market</h1>
+                        <h1>Urban Farmers' Market</h1>
                          <hr class="intro-divider">
-                           <div class="dropdown">
+                          <!--  <div class="dropdown">
                             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Location<span class="caret"></span>
                             </button>
                              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Recent Products<span class="caret"></span>
@@ -88,7 +88,7 @@
                                         <li role="separator" class="divider"></li>
                                         <li><a href="#">Separated link</a></li>
                                 </ul>
-                            </div>
+                            </div> -->
                     </div>
                 </div>
             </div>
