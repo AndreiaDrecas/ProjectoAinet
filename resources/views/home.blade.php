@@ -1,17 +1,20 @@
 @extends('master')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+<!-- Header -->
+<a name="about"></a>
+<div class="intro-header">
+    <div class="container">
 
-                <div class="panel-body">
-                    You are logged in!
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="intro-message">
+                    <h1>Urban Farmers' Market</h1>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
+
 @endsection
