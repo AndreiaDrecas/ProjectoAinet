@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('location');
             $table->string('profile_url');
             $table->string('presentation');
+            $table->integer('type');
             $table->rememberToken();
             $table->timestamps();
         });
