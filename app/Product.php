@@ -16,6 +16,6 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'offering_date', 'units', 'description', 'multimedia_content', 'tags', 'comments'
+        'name', 'description', 'available_on', 'available_until', 'price_cents', 'trade_prefs', 'quantity', 'media', 'tags', 'blocked'
     ];// falta dados do utilizador: score, location e name
 }
