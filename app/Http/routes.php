@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('home');
 });
 
+// Route::post('/login', function () {
+//     return view('login'); é assim?
+// });
+
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+// Route::get('/home', 'HomeController@index');
+
+// Route::get('/products', 'ProductController@listProducts')->name('products.index');

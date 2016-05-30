@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+<<<<<<< HEAD
      /**
+=======
+    /**
+>>>>>>> refs/remotes/origin/master
      * The attributes that are mass assignable.
      *
      * @var array

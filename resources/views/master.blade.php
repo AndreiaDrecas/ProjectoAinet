@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Urban's Farmers' Market</title>
+    <title>Urban Farmers' Market</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -70,7 +70,40 @@
 
 @yield('main_content')
     <!-- Header -->
+<<<<<<< HEAD
     
+=======
+    <a name="about"></a>
+    <div class="intro-header">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <h1>Urban Farmers' Market</h1>
+                         <hr class="intro-divider">
+                          <!--  <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Location<span class="caret"></span>
+                            </button>
+                             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Recent Products<span class="caret"></span>
+                            </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <span> <li><a href="#">Action</a></li></span>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </div> -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+>>>>>>> refs/remotes/origin/master
     <!-- /.intro-header -->
 
     <!-- Page Content -->
@@ -180,7 +213,7 @@
                             <a href="#contact">Contact</a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
+                    <p class="copyright text-muted small">Copyright &copy; Urban Farmers' Market 2016. All Rights Reserved</p>
                 </div>
             </div>
         </div>

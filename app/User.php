@@ -23,4 +23,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function typeToStr() {
+        switch ($this->type) {
+            case 0:
+                return 'Administrator';
+            case 1:
+                return 'Participant';
+        }
+
+        return 'Unknown';
+    }
 }
