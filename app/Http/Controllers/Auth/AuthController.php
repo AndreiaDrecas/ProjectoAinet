@@ -52,12 +52,10 @@ class AuthController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-            'password_confirmation' => 'same:password',
             'location' => 'required|max:255',
-            'profile_photo' => 'max:255',
-            'profile_url' => 'url|max:255',
-            'presentation' => 'max:255',
-            'admin' => 'max:1'
+            'profile_photo' => 'optional|max:255',
+            'profile_url' => 'optional|max:255',
+            'presentation' => 'optional|max:255'
         ]);
     }
 
@@ -76,9 +74,7 @@ class AuthController extends Controller
             'location' => $data['location'],
             'profile_photo' => $data['profile_photo'],
             'profile_url' => $data['profile_url'],
-            'presentation' => $data['presentation'],
-            'admin' => $data['admin']
-
+            'presentation' => $data['presentation']
         ]);
     }
 }
