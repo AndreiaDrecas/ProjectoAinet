@@ -38,7 +38,6 @@
                                 <th class="sellsCount">Sells Count</th>
                             </tr>
                             <tr>
-                                <!-- On rows -->
                                 <td class="">OLA</td>
                                 <td class="">OLA</td>
                                 <td class="">OLA</td>
