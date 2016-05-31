@@ -25,4 +25,27 @@ class UserController extends Controller
 	{
 		// responds to login for any verb
 	}
+
+	public function listUsers()
+    {
+        $users = User::all();
+        $title = 'Users List';
+
+        return view('users.index', compact('title', 'users'));
+    }
+
+    public function addUser()
+    {
+   
+    }
+
+    public function editUser()
+    {
+      
+    }
+
+    public function deleteUser()
+    {
+
+    }
 }
