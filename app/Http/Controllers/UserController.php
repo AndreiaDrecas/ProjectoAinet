@@ -16,6 +16,9 @@ class UserController extends Controller
 	public function getIndex()
 	{
 		// responds to GET 'users/'
+		$title = "List users";
+		$users = User::all();
+		//return View::make('users.list', compact('title', 'users'));
 	}
 	public function postDetails()
 	{
@@ -28,17 +31,30 @@ class UserController extends Controller
 
 	public function listUsers()
     {
-        $users = User::all();
-        $title = 'Users List';
+        // $users = User::all(); ou getIndex()?
+        // $title = 'Users List';
 
-        return view('users.index', compact('title', 'users'));
+        // return view('users.index', compact('title', 'users'));
     }
 
-    public function addUser()
-    {
-   
+    public function getAdd() {
+    	// Authentication::checkPermission('add');
+    	// $title = 'Add user';
+    	// $user = new User;
+    	// $errors = false;
+    	//return View::make('users.add', compact('title', 'user', 'errors'));
     }
-
+    public function postAdd() {
+    	// if (isset($_POST['cancel'])) { $this->redirectToHome();}
+    	// Authentication::checkPermission('add');
+    	// $title = 'Add user';
+    	// $user = new User;
+    	// $errors = $this->validateInput($user);
+    	// if (count($errors)) {
+    	// 	return View::make('users.add', compact('title', 'user', 'errors'));
+    	// }
+    }
+    
     public function editUser()
     {
       
