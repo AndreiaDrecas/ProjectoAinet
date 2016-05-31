@@ -23,11 +23,8 @@ Route::auth();
 Route::get('/products', 'ProductController@listProducts')->name('products.index');
 Route::get('/product/detail', 'ProductController@listDetails')->name('products.detail');
 
-<<<<<<< HEAD
+
 Route::controller('users', 'UserController');
 
 //administrator
 
-=======
-Route::controller('users', 'UserController');
->>>>>>> cac97a0e0dec4c8f32b6ba078e59e0ed447aadd4
