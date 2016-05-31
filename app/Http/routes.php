@@ -23,4 +23,5 @@ Route::auth();
 
 // Route::get('/home', 'HomeController@index');
 
-// Route::get('/products', 'ProductController@listProducts')->name('products.index');
+Route::get('/products', 'ProductController@listProducts')->name('products.index');
+
