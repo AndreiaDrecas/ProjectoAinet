@@ -21,3 +21,4 @@ Route::auth();
 
 Route::get('/products', 'ProductController@listProducts')->name('products.index');
 
+Route::controller('users', 'UserController');
