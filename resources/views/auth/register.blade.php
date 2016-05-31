@@ -69,35 +69,40 @@
                             <label class="col-md-4 control-label">Location</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" value="{{ old('location') }}">
+                                <input type="text" class="form-control" name="location" value="{{ old('location') }}">
 
                                 @if ($errors->has('location'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('location') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                           <div class="form-group">
+                           <div class="form-group{{ $errors->has('profile_url') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Profile URL</label>
                              <div class="col-md-6">
                              
                             <div class="input-group">
                               <span class="input-group-addon" id="basic-addon3">mypersonalpage.com</span>
-                              <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                              <input type="text" class="form-control" name="profile_url" id="basic-url" aria-describedby="basic-addon3">
+                             @if ($errors->has('profile_url'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('profile_url') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                              </div>
                             </div>
 
-                             <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
+                             <div class="form-group{{ $errors->has('presentation') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Presentation</label>
 
                             <div class="col-md-6">
                                 <textarea class="form-control" style="min-width: 100%"></textarea>
-                                @if ($errors->has('location'))
+                                @if ($errors->has('presentation'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('presentation') }}</strong>
                                     </span>
                                 @endif
                             </div>

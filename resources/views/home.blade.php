@@ -4,6 +4,7 @@
 <!-- Header -->
 <a name="about"></a>
 <div class="intro-header">
+<<<<<<< HEAD
 	<div class="container">
 
 		<div class="row">
@@ -34,6 +35,17 @@
 		</div>
 	</div>
 </div>
+=======
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="intro-message">
+                    <h1>Urban Farmers' Market</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+>>>>>>> cac97a0e0dec4c8f32b6ba078e59e0ed447aadd4
 </div>
 
 @endsection

@@ -27,7 +27,7 @@ class ProductController extends Controller
     public function listDetails()
     {
         $products = Advertisement::all();
-        $title = 'Products Detail';
+        $title = 'Product Detail';
 
         return view('products.detail', compact('title', 'products'));
     }
