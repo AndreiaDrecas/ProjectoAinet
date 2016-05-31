@@ -12,7 +12,7 @@ class ProductController extends Controller
 {
 	public function __construct()
 	{
-		$this->middleware('auth', ['except' => 'listProducts',]);
+		$this->middleware('auth', ['except' => 'listProducts', ]);
 	}
 
     public function listProducts()
