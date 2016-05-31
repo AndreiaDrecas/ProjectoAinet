@@ -22,4 +22,14 @@ class ProductController extends Controller
 
         return view('products.index', compact('title', 'products'));
     }
+
+
+       public function listDetails()
+    {
+        $products = Advertisement::all();
+        $title = 'Products Detail';
+
+        return view('products.detail', compact('title', 'products'));
+    }
 }
+
