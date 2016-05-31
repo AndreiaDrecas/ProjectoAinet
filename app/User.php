@@ -11,8 +11,10 @@ class User extends Authenticatable
      *
      * @var array
      */
+    
+    
     protected $fillable = [
-        'name', 'email', 'password', 'location', 'profile_photo', 'profile_url', 'presentation'
+        'name', 'email', 'password', 'location', 'profile_photo', 'profile_url', 'presentation', 'admin', 'blocked'
     ];
 
     /**
@@ -24,14 +26,4 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function typeToStr() {
-        switch ($this->type) {
-            case 0:
-                return 'Administrator';
-            case 1:
-                return 'Participant';
-        }
-
-        return 'Unknown';
-    }
 }
