@@ -10,6 +10,11 @@ use App\Advertisement;
 
 class ProductController extends Controller
 {
+	public function __construct()
+	{
+		$this->middleware('auth' , ['except' => 'listProducts']);
+	}
+
     public function listProducts()
     {
         $products = Advertisement::all();
