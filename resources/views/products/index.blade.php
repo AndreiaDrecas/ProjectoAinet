@@ -1,5 +1,7 @@
 @extends('master')
 
+@section('title', 'Products List')
+
 @section('content')
 <div>
     <h1 align="center" href="">{{$title}}</h1>
