@@ -12,19 +12,19 @@ class ProductController extends Controller
 {
 	public function __construct()
 	{
-		$this->middleware('auth', ['except' => 'listProducts', ]);
+		$this->middleware('auth', ['except' => 'listProducts', 'listDetails']);
 	}
 
     public function listProducts()
     {
         $products = Advertisement::all();
-        $title = 'List products';
+        $title = 'Products List';
 
         return view('products.index', compact('title', 'products'));
     }
 
 
-       public function listDetails()
+    public function listDetails()
     {
         $products = Advertisement::all();
         $title = 'Products Detail';
