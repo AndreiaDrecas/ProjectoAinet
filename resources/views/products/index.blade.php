@@ -1,15 +1,19 @@
 @extends('master')
 
 @section('content')
-{{--<div>
-    <a class="btn btn-primary" href="">Add user</a>
-</div>--}}
+<div>
+    <h1 align="center" href="">{{$title}}</h1>
+</div>
 
-<form class="search" role="search">
-	<div class="form-group">
-		<input type="text" class="form-control" placeholder="Search Product">
-	</div>
-	<button type="search" class="btn btn-default">Search</button>
+<form class="col-lg-4" role="search">
+	<div class="input-group">
+       <span class="input-group-btn">
+        <button type="search" class="btn btn-default">Search</button>
+    </span> 
+    <input type="text" class="form-control" placeholder="Search Product">
+
+</div>
+
 </form>
 
 
@@ -33,8 +37,7 @@
                     <td>{{-- {{$user->created_at}} --}}</td>
                     <td>{{-- {{$user->typeToStr()}} --}}</td>
                     <td>
-                        <a class="btn btn-xs btn-primary" href="" role="button">Edit</a>
-                    </td>
+                       
                 </tr>
           {{--   @endforeach --}}
         </tbody>
