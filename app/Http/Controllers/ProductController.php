@@ -6,13 +6,13 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Product;
+use App\Advertisement;
 
 class ProductController extends Controller
 {
     public function listProducts()
     {
-        $users = Product::all();
+        $products = Advertisement::all();
         $title = 'List products';
 
         return view('products.index', compact('title', 'products'));
