@@ -22,6 +22,7 @@
                 <th>Offering Date</th>
                 <th>Seller's name</th>
                 <th>Seller's score</th>
+                <th>Image</th>
             </tr>
         </thead>
         <tbody>
