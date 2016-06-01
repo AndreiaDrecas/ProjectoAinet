@@ -17,4 +17,5 @@
     <h2>No advertisement found</h2>
 @endif
 </div>
+
 @endsection
