@@ -1,5 +1,7 @@
 
-@extends('layouts.backend')
+@extends('layouts.app')
+
+@section('title', "Urban Farmers' Market")
 
 @section('content')
 @if (count($advertisements))
