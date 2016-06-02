@@ -1,24 +1,50 @@
-<nav class="navbar navbar-dark bg-inverse" > 
-            <a class="navbar-brand" href="{{ url('/') }}">
-               Home
-            </a>   
 
-          <ul class="nav navbar-nav">
-            <li class="nav-item active">
-              <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
- -->            </li>
-            <li class="nav-item">
-            <!--   <a class="nav-link" href="#">Features</a>
- -->            </li>
-            <li class="nav-item">
-            <!--   <a class="nav-link" href="#">Pricing</a>
- -->            </li>
-            <li class="nav-item">
-             <!--  <a class="nav-link" href="#">About</a>
- -->            </li>
-          </ul>
-              <!-- <ul class="nav navbar-nav pull-xs-right"> -->
-                    <!-- Authentication Links -->
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+
+      <!-- Collapsed Hamburger -->
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+        <span class="sr-only">Toggle Navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <!-- Branding Image -->
+      <a class="navbar-brand" href="{{ url('/') }}">
+        Home
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="app-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{{ url('/user') }}">User</a></li>
+        <li><a href="{{ url('/product') }}">Product</a></li>
+        <li><a href="{{ url('/products') }}">Products List</a></li>
+        @if (Auth::guest())
+          <li><a href="{{ url('/login') }}">Login</a></li>
+          <li><a href="{{ url('/register') }}">Register</a></li>
+        @else
+          Welcome, {{ Auth::user()->name }} 
+          <li><a href="{{ url('/profile') }}">profile</a><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li><span class="caret"></span>
+        @endif
+      </ul>
+   
+    </div>
+  </div>
+</nav>
+          <!-- <div>
+          <ul class="nav navbar-nav navbar-right"> -->
+               <!--  <li class="nav-item active"><a href="{{ url('/user') }}">User</a></li>
+                <li class="nav-item active"><a href="{{ url('/product') }}">Product</a></li>
+                <li class="nav-item active"><a href="{{ url('/products') }}">Products List</a></li>
+                <li class="nav-item active"><a href="{{ url('/login') }}">Login</a></li>
+                <li class="nav-item active"><a href="{{ url('/register') }}">Register</a></li> -->
+         <!--  </ul>
+       </div> -->
+       <!-- <ul class="nav navbar-nav pull-xs-right"> -->
+       <!-- Authentication Links -->
                     <!-- @if (Auth::guest())
                         <form class="form-inline pull-xs-right">
                         <div class="form-group">
@@ -36,6 +62,5 @@
 
                         
                     @endif
-                </ul> -->
-    
-      </nav> <!-- /navbar -->
+                  </ul> -->
+<!-- /navbar -->
