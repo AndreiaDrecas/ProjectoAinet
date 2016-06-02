@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title', 'Create user')
+@section('title', 'Register User')
 
 @section('content')
 <div class="container">
