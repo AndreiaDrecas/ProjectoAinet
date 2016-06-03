@@ -44,7 +44,15 @@ body {
 }
 
 .navbar {
-  margin-bottom: 20px;
+  
+    margin-bottom: 20px;
+    background: url() center / contain no-repeat;
+}
+
+
+.navbar-brand{ 
+  
+
 }
 
 

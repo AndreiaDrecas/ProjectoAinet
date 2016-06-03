@@ -13,8 +13,12 @@
         
 </head>
 <body>
+
+
+
+
      <!-- Nav Bar -->
-      <nav class="navbar navbar-static-top navbar-dark bg-inverse">        
+      <nav class="navbar navbar-static-top navbar-dark bg-primary">      
           <a class="navbar-brand" href="/">Urban Farmer</a>
           <ul class="nav navbar-nav">
             <li class="nav-item active">
@@ -29,7 +33,7 @@
             <li class="nav-item">
               <a class="nav-link" href="#">About</a>
             </li>
-          </ul>
+          
 
           @if (Auth::guest())
           <form class="form-inline pull-xs-right" role="form" method="POST" action="{{ url('/login') }}">
@@ -60,8 +64,10 @@
             </ul>
           </div>         
         @endif
-        
+        </ul>
       </nav> <!-- /navbar -->
+
+
       <div class="container">   
         @yield('content')
       </div>
