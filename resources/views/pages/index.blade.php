@@ -21,5 +21,7 @@
 </div>
 </div>
 @endforeach
+@else
+No user
 @endif
 @endsection
