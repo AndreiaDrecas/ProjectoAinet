@@ -78,19 +78,19 @@ Route::auth();
 
 
 Route::get('dashboard', 'DashboardController@index');
-Route::get('dashboard/users', 'UserController@index');
+Route::get('users', 'UserController@index');
 
-Route::get('dashboard/users/create', [
+Route::get('users/create', [
     'as' => 'users.create',
     'uses' => 'UserController@getCreate',
 ]);
-Route::post('dashboard/users/create', 'UserController@postCreate');
-Route::get('dashboard/users/edit/{id}', ['as' => 'users.edit',
+Route::post('users/create', 'UserController@postCreate');
+Route::get('users/edit/{id}', ['as' => 'users.edit',
     'uses' => 'UserController@getEdit', ]);
 
-Route::post('dashboard/users/edit/{id}', 'UserController@postEdit');
-Route::get('dashboard/users/show/{id}', 'UserController@show');
-Route::post('dashboard/users/delete/{id}', [
+Route::post('users/edit/{id}', 'UserController@postEdit');
+Route::get('users/show/{id}', 'UserController@show');
+Route::post('users/delete/{id}', [
     'as' => 'users.delete',
     'uses' => 'UserController@postDelete',
 ]);

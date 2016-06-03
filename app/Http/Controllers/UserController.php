@@ -11,13 +11,13 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['index','show']]);
     }
     
     public function index()
     {
         $users = User::latest('created_at')->get();
-        return view('dashboard.users.list', compact('users'));
+        return view('users.list', compact('users'));
     }
 
 
@@ -28,7 +28,7 @@ class UserController extends Controller
 
     public function getCreate()
     {
-        return view('dashboard.users.add');
+        return view('users.add');
     }
 
     public function postCreate(Request $request)
@@ -48,12 +48,12 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::findorfail($id);
-        return view('dashboard.users.details', compact('user'));
+        return view('users.details', compact('user'));
         
     }
 
     public function postDelete($id){
         User::destroy($id);
-        return redirect('dashboard/users');
+        return redirect('users');
     }    
 }
