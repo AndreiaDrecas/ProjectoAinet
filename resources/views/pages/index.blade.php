@@ -14,7 +14,7 @@
       <div class="caption">
         <h3>{{ $advertisement->name }}</h3>
         <p>{{ $advertisement->description }}</p>
-        <p><a href="#" class="btn btn-primary" role="button">More Details</a></p>
+        <p><a href="{{url('advertisements/'.$advertisement->id)}}" class="btn btn-primary" role="button">More Details</a></p>
       </div>
     </div>
   </div>
@@ -22,6 +22,6 @@
 </div>
 @endforeach
 @else
-No user
+  No user
 @endif
 @endsection
