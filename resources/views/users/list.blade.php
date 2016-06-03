@@ -50,13 +50,14 @@
             <td>{{ $user->created_at }}</td>            
             <td align="center">
                 <a class="btn btn-xs btn-primary" href="{{route('users.edit', ['id' => $user->id])}}"><em class="fa fa-pencil"></em></a>
-                <form action="{{route('users.delete', ['id' => $user->id])}}" method="post" class="inline">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                {{ Form::open(['route' => ['users.delete',  $user->id], 'method' => 'delete', 'class' => 'inline']) }}        
+                
                     <div class="form-group">
                         <button type="submit" class="btn btn-xs btn-danger"><em class="fa fa-trash"></em></button>
                     </div>
 
-                </form>
+               {{ Form::close() }}
             </td>
         </tr>
     @endforeach

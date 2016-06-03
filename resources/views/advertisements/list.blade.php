@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.backend')
+@extends('layouts.backend')
 
 @section('title', 'List users')
 
@@ -28,12 +28,14 @@
             <td>{{ $advertisement->owner_id }} </td>           
             <td>
                 <a class="btn btn-xs btn-primary" href="{{route('advertisements.edit', ['id' => $advertisement->id])}}">Edit</a>
-                <form action="{{url('advertisements/delete', ['id' => $advertisement->id])}}" method="post" class="inline">
+
+                {{ Form::open(['route' => ['advertisements.destroy',  $advertisement->id], 'method' => 'delete', 'class' => 'inline']) }}        
+                
                     <div class="form-group">
                         <button type="submit" class="btn btn-xs btn-danger">Delete</button>
                     </div>
 
-                </form>
+               {{ Form::close() }}
             </td>
         </tr>
     @endforeach

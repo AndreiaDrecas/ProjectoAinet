@@ -33,8 +33,9 @@
               <a class="nav-link" href="#">About</a>
             </li>
           </ul>
-          <form class="form-inline pull-xs-right">
 
+          @if (Auth::guest())
+          <form class="form-inline pull-xs-right">
             <div class="form-group">
               <label class="sr-only" for="exampleInputEmail2">Email address</label>
               <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
@@ -44,6 +45,15 @@
             <a class="btn btn-success btn-xs" href="">
             <i class="glyphicon glyphicon-envelope"></i> Sign Up</a>
           </form>
+          @else
+            @if (Auth::user()->admin == 1)
+              <li><a href="{{ url('/painel') }}">Painel</a></li>
+            @endif
+          <li><a href="{{ url('/profile') }}">Profile</a></li>
+          <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>   
+          <span class="welcome"></span>
+          Welcome, {{ Auth::user()->name }}
+        @endif
         
       </nav> <!-- /navbar -->
     <div class="container">

@@ -54,7 +54,7 @@ class AdvertisementController extends Controller
         return view('advertisements.edit', compact('advertisement'));
     }
 
-     public function update($id, AdvertisementRequest $request)
+    public function update($id, AdvertisementRequest $request)
     {
         $advertisement = Advertisement::findOrFail($id);
 
@@ -62,5 +62,11 @@ class AdvertisementController extends Controller
 
         return redirect('advertisements');
     }
+
+     public function destroy($id){
+
+        Advertisement::destroy($id);
+        return redirect('advertisements');
+    } 
 
 }

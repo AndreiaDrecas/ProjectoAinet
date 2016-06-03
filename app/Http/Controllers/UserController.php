@@ -11,7 +11,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index','show']]);
+        $this->middleware('admin');
     }
     
     public function index()
@@ -26,12 +26,12 @@ class UserController extends Controller
         return view('register');
     }
 
-    public function getCreate()
+    public function create()
     {
         return view('users.add');
     }
 
-    public function postCreate(Request $request)
+    public function store(Request $request)
     {
         $this->validate($request, [
             'email' => 'required|email',
@@ -52,7 +52,7 @@ class UserController extends Controller
         
     }
 
-    public function postDelete($id){
+    public function destroy($id){
         User::destroy($id);
         return redirect('users');
     }    

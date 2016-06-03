@@ -15,9 +15,10 @@ class RedirectIfNotAAdmin
      */
     public function handle($request, Closure $next)
     {
-
+        if ( ! $request->user()->isAdmin()) {
             return redirect('/');
-        }      
+        }
+             
         return $next($request);
     }
 }
