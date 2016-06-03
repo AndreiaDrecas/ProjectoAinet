@@ -15,10 +15,10 @@
 <body>
      <!-- Nav Bar -->
       <nav class="navbar navbar-static-top navbar-dark bg-inverse">        
-          <a class="navbar-brand" href="#">Urban Farmer</a>
+          <a class="navbar-brand" href="/">Urban Farmer</a>
           <ul class="nav navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Features</a>
@@ -45,31 +45,34 @@
                                 </button>
           </form>
           @else
-          <div class="form-group pull-xs-right">
-          <span class="welcome">Welcome, {{ Auth::user()->name }}</span><br>
-            @if (Auth::user()->admin == 1)
-                <a href="{{ url('/painel') }}">Painel</a>
-            @endif
-            <a href="{{ url('/profile') }}">Profile</a>
-            <a href="{{ url('/logout') }}">Logout</a>  
-          
-          
-          </div>
+          <div class="dropdown pull-xs-right">
+            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              {{ Auth::user()->name }}
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+              @if (Auth::user()->admin == 1)
+              <li><a class="dropdown-item" href="{{ url('/painel') }}">Painel</a></li>
+              @endif
+              <li><a class="dropdown-item" href="{{ url('/profile') }}">Profile</a></li>
+              <div class="dropdown-divider"></div>
+              <li><a class="dropdown-item" href="{{ url('/logout') }}">Logout</a></li>
+            </ul>
+          </div>         
         @endif
         
       </nav> <!-- /navbar -->
-    <div class="container">
-    
-
-    <!-- Search bar -->
-   @yield('content')
-
-     
-      
+      <div class="container">   
+        @yield('content')
       </div>
 
     </div> <!-- /container -->
-
+    <!-- Footer -->
+<footer class="footer">
+    <div class="container wrap">
+        <p class="copyright text-muted small">Copyright &copy; Urban Farmers' Market 2016. All Rights Reserved</p>
+    </div>
+</footer>
     <!-- jQuery first, then Bootstrap JS. -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
