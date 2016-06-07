@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.backend')
 
 @section('title', $advertisement->name)
 
@@ -8,6 +8,7 @@
 @if (count($advertisement))
     <h1> {{ $advertisement->name }} </h1>
     <article>
+    	
         {{ $advertisement->description }}
     </article>
     {{ $advertisement->created_at }}

@@ -19,16 +19,6 @@
           <ul class="nav navbar-nav">
             <li class="nav-item active">
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
           </ul>
 
           @if (Auth::guest())
@@ -58,14 +48,24 @@
         @endif
         
       </nav> <!-- /navbar -->
-    <div class="container">
-    
+      <div class="container">
 
-    <!-- Search bar -->
-   @yield('content')
 
-     
-      
+        <!-- Search bar -->
+        <form class="navbar-form navbar-left" role="search">
+        <div class="col-md-3">
+        <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <div class="container">
+          @yield('content')
+
+        </div>
+
+        </div> 
+
       </div>
 
     </div> <!-- /container -->
