@@ -12,7 +12,10 @@
         {{ $advertisement->description }}
     </article>
     {{ $advertisement->created_at }}
+    <p><h4>Details of the seller</h4></p>
     {{ $advertisement->owner_id }}
+
+
     @if ($advertisement->owner_id == Auth::user()->id)
 	   <hr>
 	    <div>
