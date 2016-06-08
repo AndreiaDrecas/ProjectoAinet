@@ -66,18 +66,26 @@
         @endif
         </ul>
       </nav> <!-- /navbar -->
-      <div class="container">
 
 
         <!-- Search bar -->
-        <form class="navbar-form navbar-left" role="search">
+        <div class="container">
+        <div class="row">
+        <form class="navbar-form center" role="search">
         <div class="col-md-3">
         <input type="text" class="form-control" placeholder="Search">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+  </div>
+  </div>
 
         <div class="container">
+        @if (Session::has('flash_message'))
+          <div class="alert alert-success"> 
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>{{ Session::get('flash_message') }}</div>
+        @endif
+
           @yield('content')
 
         </div>

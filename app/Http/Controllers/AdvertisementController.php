@@ -34,38 +34,35 @@ class AdvertisementController extends Controller
 
      public function store(AdvertisementRequest $request)
     {    
-        $advertisement = new Advertisement($request->all());
         
-        $request->user()->advertisements()->save($advertisement);
+        $request->user()->advertisements()->create($request->all());
+
+        \Session::flash('flash_message', 'Your advertisement has been created!');
        
         return redirect('advertisements');
     }
 
 
-    public function show($id)
+    public function show(Advertisement $advertisement)
     {      
-        $advertisement = Advertisement::findOrFail($id);
         return view('advertisements.detail',compact('advertisement'));
     }
 
-    public function edit($id)
+    public function edit(Advertisement $advertisement)
     {
-        $advertisement = Advertisement::findOrFail($id);
         return view('advertisements.edit', compact('advertisement'));
     }
 
-    public function update($id, AdvertisementRequest $request)
+    public function update(Advertisement $advertisement, AdvertisementRequest $request)
     {
-        $advertisement = Advertisement::findOrFail($id);
-
         $advertisement->update($request->all());
 
         return redirect('advertisements');
     }
 
-     public function destroy($id){
+     public function destroy(Advertisement $advertisement){
 
-        Advertisement::destroy($id);
+        $advertisement->delete();
         return redirect('advertisements');
     } 
 

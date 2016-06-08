@@ -41,7 +41,7 @@
     <tbody>
     @foreach ($users as $user)
         <tr>
-            <td><a href="users/show/{{ $user->id }}">{{ $user->name }} </a></td>
+            <td><a href="users/{{ $user->id }}">{{ $user->name }} </a></td>
             <td>{{ $user->email }}</td>
              <th>
             @if ($user->admin==1) Yes @else No @endif
@@ -51,7 +51,7 @@
             <td align="center">
                 <a class="btn btn-xs btn-primary" href="{{route('users.edit', ['id' => $user->id])}}"><em class="fa fa-pencil"></em></a>
 
-                {{ Form::open(['route' => ['users.delete',  $user->id], 'method' => 'delete', 'class' => 'inline']) }}        
+                {{ Form::open(['route' => ['users.destroy',  $user->id], 'method' => 'delete', 'class' => 'inline']) }}        
                 
                     <div class="form-group">
                         <button type="submit" class="btn btn-xs btn-danger"><em class="fa fa-trash"></em></button>
