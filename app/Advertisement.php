@@ -14,8 +14,7 @@ class Advertisement extends Model
         'price_cents', 
         'trade_prefs', 
         'quantity',
-        'available_on',
-        'owner_id',
+        'available_on'
 
     ];
     

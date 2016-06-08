@@ -58,7 +58,7 @@
 
     <div class="form-group">
         <button type="submit" class="btn btn-primary" name="ok">Add</button>
-        <a class="btn btn-default" href="{{url('advertisements')}}">Cancel</a>
+        <button type="btn btn-danger" href="{{url('advertisements')}}">Cancel</button>
     </div>
 </form>
 @endsection

@@ -8,6 +8,7 @@
 @if (count($advertisement))
     <h1> {{ $advertisement->name }} </h1>
     <article>
+    	
         {{ $advertisement->description }}
     </article>
     {{ $advertisement->created_at }}
