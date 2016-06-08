@@ -22,7 +22,7 @@
           <a class="navbar-brand" href="/">Urban Farmer</a>
           <ul class="nav navbar-nav">
             <li class="nav-item active">
-<<<<<<< HEAD
+
               <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
@@ -34,11 +34,6 @@
             <li class="nav-item">
               <a class="nav-link" href="#">About</a>
             </li>
-          
-=======
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </ul>
->>>>>>> 7f19e4a8183a7ec68bdfa527783910bcec3a6bf4
 
           @if (Auth::guest())
           <form class="form-inline pull-xs-right" role="form" method="POST" action="{{ url('/login') }}">
@@ -71,12 +66,6 @@
         @endif
         </ul>
       </nav> <!-- /navbar -->
-<<<<<<< HEAD
-
-
-      <div class="container">   
-        @yield('content')
-=======
       <div class="container">
 
 
@@ -95,7 +84,6 @@
 
         </div> 
 
->>>>>>> 7f19e4a8183a7ec68bdfa527783910bcec3a6bf4
       </div>
 
     </div> <!-- /container -->
