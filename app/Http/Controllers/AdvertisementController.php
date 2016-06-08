@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Advertisement;
+use App\Tag;
 use App\Http\Requests;
 use App\Http\Requests\AdvertisementRequest;
 use Illuminate\Http\Request;
@@ -28,8 +29,8 @@ class AdvertisementController extends Controller
 
     public function create()
     {
-
-        return view('advertisements.add');
+        $tags = Tag::lists('name');
+        return view('advertisements.add', compact('tags'));
     }
 
      public function store(AdvertisementRequest $request)

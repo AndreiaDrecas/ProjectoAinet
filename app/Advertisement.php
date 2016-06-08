@@ -45,5 +45,9 @@ class Advertisement extends Model
         return $this->belongsTo('App\User'); //owner_id
     }
 
+    public function tags(){
+        return $this->belongsToMany('App\Tag');
+    }
+
     
 }
