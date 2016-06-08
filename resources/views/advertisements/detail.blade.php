@@ -13,7 +13,12 @@
     </article>
     {{ $advertisement->created_at }}
     {{ $advertisement->owner_id }}
-    
+    @if ($advertisement->owner_id == Auth::user()->id)
+	   <hr>
+	    <div>
+	    	<a class="btn btn-xs btn-primary" href="{{route('advertisements.edit', ['id' => $advertisement->id])}}">Edit</a>
+	    </div>
+    @endif
 @else
     <h2>No advertisement found</h2>
 @endif
