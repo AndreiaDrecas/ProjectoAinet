@@ -35,7 +35,10 @@
       <button type="submit" class="btn btn-success btn-xs">
         Login
       </button>
-    </form>
+     
+      <a  class="btn btn-success btn-xs" href="{{url('/register')}}">Register</a>
+  
+  </form>
     @else
     <div class="dropdown pull-xs-right">
       <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
