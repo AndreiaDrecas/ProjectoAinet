@@ -26,8 +26,7 @@ class PagesController extends Controller
 
      public function profile()
     {     
-        $user = User::latest('created_at')->get();
-
+        $user = User::find(Auth::user()->id);
         return view('pages.profile',compact('user'));
     }
 }

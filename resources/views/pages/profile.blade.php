@@ -5,7 +5,7 @@
 
 @if (count($user))
     
-            <td>{{ $user->name }}</td>
+            <td></td>
             <td>{{ $user->email }}</td>
              <th>
             @if ($user->admin==1) Yes @else No @endif
