@@ -51,7 +51,7 @@
 
 </div>
 
-</div> <!-- /container -->
+</div>
 <!-- Footer -->
 @include('common.footer')
 <!-- jQuery first, then Bootstrap JS. -->
