@@ -1,4 +1,4 @@
-@extends('layouts.backend')
+@extends('pages.layouts.backend')
 
 
 
@@ -12,7 +12,7 @@
 </hr>
 
 {!! Form::open(['url' => 'advertisements']) !!}
-   @include('advertisements.form', ['submitButtonText' => 'Add Advertisements']);
+   @include('advertisements.form', ['submitButtonText' => 'Create Advertisement'])
 {!! Form::close() !!}
 </div>
 @endsection
