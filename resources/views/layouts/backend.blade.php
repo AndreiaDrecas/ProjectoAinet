@@ -16,7 +16,7 @@
 
  <!-- Nav Bar -->
  <nav class="navbar navbar-static-top navbar-dark bg-primary">      
-  <a class="navbar-brand" href="/">Urban Farmer</a>
+  <!--<a class="navbar-brand" href="/">Urban Farmer</a>-->
   <ul class="nav navbar-nav">
     <li class="nav-item active">
 
@@ -55,7 +55,7 @@
   </ul>
 </nav> <!-- /navbar -->
 
-
+<h1 align="center">URBAN FARMERS' MARKET</h1>
 <!-- Search bar -->
 <div class="container">
   <div class="row">

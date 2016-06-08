@@ -31,5 +31,5 @@
 
     <div class="form-inline">
     {!! Form::submit($submitButtonText,['class' => 'btn btn-primary form-control'] ) !!}
-        <a class="btn btn-danger" href="{{url('advertisements')}}">Cancel</a>
+        <a class="btn btn-danger" href="{{url('/')}}">Cancel</a>
     </div>

@@ -1,12 +1,13 @@
-@extends('layouts.backend')
+@extends('pages.layouts.backend')
 
 @section('title', 'List users')
 
 @section('content')
 <div>
-    <a class="btn btn-primary" href="{{ url('advertisements/create') }}">Add advertisement</a>
+    <a class="btn btn-primary" href="{{ url('advertisements/create') }}">Create advertisement</a>
 </div>
 
+<br />
 @if (count($advertisements))
     <table class="table table-striped">
     <thead>
