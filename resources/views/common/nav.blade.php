@@ -11,9 +11,9 @@
       {{ csrf_field() }}
       <div class="form-group">
         <label class="sr-only" for="exampleInputEmail2">Email address</label>
-        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Enter your E-mail">
+        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Enter your e-mail">
         <label class="sr-only" for="exampleInputPassword2">Password</label>
-        <input id="password" type="password" class="form-control" name="password" placeholder="Enter your Password">
+        <input id="password" type="password" class="form-control" name="password" placeholder="Enter your password">
       </div>
       <button type="submit" class="btn btn-success btn-xs">
         Login

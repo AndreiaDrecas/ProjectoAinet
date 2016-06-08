@@ -15,7 +15,8 @@
 <body>
 
  <!-- Nav Bar -->
- <nav class="navbar navbar-static-top navbar-dark bg-primary">      
+ @include('common.nav')
+<!--  <nav class="navbar navbar-static-top navbar-dark bg-primary">      
   <a class="navbar-brand" href="/">Urban Farmer</a>
   <ul class="nav navbar-nav">
     <li class="nav-item active">
@@ -53,7 +54,7 @@
     </div>         
     @endif
   </ul>
-</nav> <!-- /navbar -->
+</nav> --> <!-- /navbar -->
 
 <div class="container">
   @if (Session::has('flash_message'))
@@ -71,11 +72,7 @@
 
 </div> <!-- /container -->
 <!-- Footer -->
-<footer class="footer">
-  <div class="container wrap">
-    <p class="copyright text-muted small">Copyright &copy; Urban Farmers' Market 2016. All Rights Reserved</p>
-  </div>
-</footer>
+@include('common.footer')
 <!-- jQuery first, then Bootstrap JS. -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
