@@ -21,7 +21,7 @@
     <p><h4>Details of the seller</h4></p>
     {{ $advertisement->owner_id }}
 
-    {{ $user->name}}
+    {{ $user->name }}
 
 
     @if ($advertisement->owner_id == Auth::user()->id)

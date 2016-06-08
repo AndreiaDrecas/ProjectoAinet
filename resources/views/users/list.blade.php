@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.backend')
+@extends('pages.layouts.backend')
 
 @section('title', 'List users')
 
@@ -21,12 +21,6 @@
                 </div>
               </div>
               <div class="panel-body">
-
-
-
-
-
-
     <table class="table table-striped table-bordered table-list">
     <thead>
         <tr>
