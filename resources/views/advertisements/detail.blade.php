@@ -7,13 +7,21 @@
 <div class="container">
 @if (count($advertisement))
     <h1> {{ $advertisement->name }} </h1>
-    <article>
-    	
-        {{ $advertisement->description }}
-    </article>
-    {{ $advertisement->created_at }}
+    @if($advertisement->description != null)
+	    <article>
+	    	<p>Description:
+	        {{ $advertisement->description }}</p>
+	    </article>
+    @endif
+
+    {{-- $advertisement->created_at --}}
+    <p>Price: {{ $advertisement->price_cents }}</p>
+    {{ $advertisement->available_on }}
+
     <p><h4>Details of the seller</h4></p>
     {{ $advertisement->owner_id }}
+
+    {{ $user->name}}
 
 
     @if ($advertisement->owner_id == Auth::user()->id)
