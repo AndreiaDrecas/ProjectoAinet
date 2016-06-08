@@ -17,7 +17,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Enter Your Fullname">
+                            <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Enter your fullname">
                         </div>
                         @if ($errors->has('name'))
                         <span class="help-block">
@@ -47,7 +47,7 @@
                     <div class="cols-md-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input id="password" type="password" class="form-control" name="password" placeholder="Enter your Password">
+                            <input id="password" type="password" class="form-control" name="password" placeholder="Enter your password">
                         </div>
                         @if ($errors->has('password'))
                         <span class="help-block">
@@ -61,7 +61,7 @@
                     <div class="cols-md-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" placeholder="Enter your password Confirmation">
+                            <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" placeholder="Enter your password confirmation">
 
                             @if ($errors->has('password_confirmation'))
                             <span class="help-block">
@@ -76,7 +76,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            <input id="location" type="text" class="form-control" name="location" value="{{ old('location') }}" placeholder="Enter Your Location">
+                            <input id="location" type="text" class="form-control" name="location" value="{{ old('location') }}" placeholder="Enter your location">
 
                             @if ($errors->has('location'))
                             <span class="help-block">
