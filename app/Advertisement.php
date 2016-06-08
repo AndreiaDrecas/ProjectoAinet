@@ -49,5 +49,10 @@ class Advertisement extends Model
         return $this->belongsToMany('App\Tag');
     }
 
+    public function getTagListAttribute()
+    {
+        return $this->tags->lists('id')->all();
+    }
+
     
 }

@@ -29,14 +29,14 @@ class AdvertisementController extends Controller
 
     public function create()
     {
-        $tags = Tag::lists('name');
+        $tags = Tag::lists('name', 'id');
         return view('advertisements.add', compact('tags'));
     }
 
      public function store(AdvertisementRequest $request)
     {    
         
-        $request->user()->advertisements()->create($request->all());
+        $this->createAdvertisement($request);
 
         \Session::flash('flash_message', 'Your advertisement has been created!');
        
@@ -46,17 +46,21 @@ class AdvertisementController extends Controller
 
     public function show(Advertisement $advertisement)
     {      
-        return view('advertisements.detail',compact('advertisement'));
+        $tags = Tag::lists('name', 'id');
+        return view('advertisements.detail',compact('advertisement','tags'));
     }
 
     public function edit(Advertisement $advertisement)
     {
-        return view('advertisements.edit', compact('advertisement'));
+        $tags = Tag::lists('name', 'id');
+        return view('advertisements.edit', compact('advertisement','tags'));
     }
 
     public function update(Advertisement $advertisement, AdvertisementRequest $request)
     {
         $advertisement->update($request->all());
+
+        $this->syncTags($advertisement,$request->input('tag_list'));
 
         return redirect('advertisements');
     }
@@ -66,5 +70,19 @@ class AdvertisementController extends Controller
         $advertisement->delete();
         return redirect('advertisements');
     } 
+
+    private function syncTags(Advertisement $advertisement, array $tags)
+    {
+        $advertisement->tags()->sync($tags);
+    }
+
+    private function createAdvertisement(AdvertisementRequest $request)
+    {
+        $advertisement = $request->user()->advertisements()->create($request->all());
+
+        $this->syncTags($advertisement,$request->input('tag_list'));
+
+        return $advertisement;
+    }
 
 }
