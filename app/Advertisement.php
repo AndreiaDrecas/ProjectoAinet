@@ -30,8 +30,6 @@ class Advertisement extends Model
         $query->where('available_on','>', Carbon::now());
     }
 
-
-
     public function setAvailableOnAttribute($date)
     {
         $this->attributes['available_on'] = Carbon::parse($date);
