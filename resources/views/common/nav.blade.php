@@ -1,36 +1,42 @@
+<nav class="navbar navbar-static-top navbar-dark bg-primary">      
+  <!--<a class="navbar-brand" href="/">Urban Farmer</a>-->
+  <ul class="nav navbar-nav">
+    <li class="nav-item active">
 
-<nav class="navbar navbar-default navbar-static-top">
-  <div class="container">
-    <div class="navbar-header">
-      <!-- Collapsed Hamburger -->
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-        <span class="sr-only">Toggle Navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+      <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+    </li>
+
+    @if (Auth::guest())
+    <form class="form-inline pull-xs-right" role="form" method="POST" action="{{ url('/login') }}">
+      {{ csrf_field() }}
+      <div class="form-group">
+        <label class="sr-only" for="exampleInputEmail2">Email address</label>
+        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Enter your E-mail">
+        <label class="sr-only" for="exampleInputPassword2">Password</label>
+        <input id="password" type="password" class="form-control" name="password" placeholder="Enter your Password">
+      </div>
+      <button type="submit" class="btn btn-success btn-xs">
+        Login
       </button>
-      <!-- Branding Image -->
-      <a class="navbar-brand" href="{{ url('/') }}">Home</a>
-    </div>
-
-    <div class="collapse navbar-collapse" id="app-navbar-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        @if (Auth::guest())
-          <li><a href="{{ url('/user') }}">User</a></li>
-          <li><a href="{{ url('/product') }}">Product</a></li>
-          <li><a href="{{ url('/products') }}">Products List</a></li>
-          <li><a href="{{ url('/login') }}">Login</a></li>
-          <li><a href="{{ url('/register') }}">Register</a></li>
-        @else
-          @if (Auth::user()->admin == 1)
-            <li><a href="{{ url('/painel') }}">Painel</a></li>
-          @endif
-          <li><a href="{{ url('/profile') }}">Profile</a></li>
-          <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>   
-          <span class="welcome"></span>
-          Welcome, {{ Auth::user()->name }}
+     
+      <a  class="btn btn-success btn-xs" href="{{url('/register')}}">Register</a>
+  
+  </form>
+    @else
+    <div class="dropdown pull-xs-right">
+      <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        {{ Auth::user()->name }}
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+        @if (Auth::user()->admin == 1)
+        <li><a class="dropdown-item" href="{{ url('/painel') }}">Painel</a></li>
         @endif
-      </ul>   
-    </div>
-  </div>
-</nav>    
+        <li><a class="dropdown-item" href="{{ url('/profile') }}">Profile</a></li>
+        <div class="dropdown-divider"></div>
+        <li><a class="dropdown-item" href="{{ url('/logout') }}">Logout</a></li>
+      </ul>
+    </div>         
+    @endif
+  </ul>
+</nav>
