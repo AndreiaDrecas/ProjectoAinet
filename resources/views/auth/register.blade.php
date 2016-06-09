@@ -93,9 +93,9 @@
                               <span class="input-group-addon" id="basic-addon3">Profile URL</span>
                               <input type="text" class="form-control" name="profile_url" id="basic-url" aria-describedby="basic-addon3" placeholder="myPersonalPage.com">
                               @if ($errors->has('profile_url'))
-                              <span class="help-block">
+                              <!--<span class="help-block">-->
                                 <strong>{{ $errors->first('profile_url') }}</strong>
-                            </span>
+                            <!--</span>-->
                             @endif
                         </div>
                     </div>
