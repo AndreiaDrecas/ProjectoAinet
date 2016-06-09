@@ -3,9 +3,7 @@
 @section('title', 'List users')
 
 @section('content')
-<div>
-    <a class="btn btn-primary" href="{{route('users.create')}}">Add user</a>
-</div>
+
 
 @if (count($users))
     
@@ -47,10 +45,15 @@
 
                 {{ Form::open(['route' => ['users.destroy',  $user->id], 'method' => 'delete', 'class' => 'inline']) }}        
                 
-                    <div class="form-group">
+                    <div class="form-inline">
                         <button type="submit" class="btn btn-xs btn-danger"><em class="fa fa-trash"></em></button>
                     </div>
 
+                    @if (Auth::user()->blocked)
+                    <button type="submit" class="btn btn-xs btn-danger">Blocked</button>
+                   @else
+                   <button type="submit" class="btn btn-xs btn-success">Blocked</button>
+                   @endif
                {{ Form::close() }}
             </td>
         </tr>
@@ -58,6 +61,10 @@
     </tbody>
     </table>
     </div>
+    <div>
+    <a class="btn btn-primary" href="{{route('users.create')}}">Add user</a>
+
+</div>
     
 @else
     <h2>No users found</h2>

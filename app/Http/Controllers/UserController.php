@@ -52,8 +52,14 @@ class UserController extends Controller
         
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         User::destroy($id);
         return redirect('users');
     }    
+
+   public function edit(User $user)
+   {
+     return view('users.edit', compact('user'));
+   }
 }
