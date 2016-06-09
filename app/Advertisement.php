@@ -15,7 +15,6 @@ class Advertisement extends Model
         'trade_prefs', 
         'quantity',
         'available_on'
-
     ];
     
     protected $dates = ['available_on'];
