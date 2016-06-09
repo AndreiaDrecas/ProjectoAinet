@@ -11,7 +11,7 @@
     
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
-             <th>
+            <th>
             @if ($user->admin==1) Yes @else No @endif
 
             </th>

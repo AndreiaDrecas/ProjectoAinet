@@ -16,13 +16,13 @@
 
     {{-- $advertisement->created_at --}}
     <p>Price: {{ $advertisement->price_cents }}</p>
-    {{ $advertisement->available_on }}
+    <p>Available on: {{ $advertisement->available_on }}</p>
 
-    <p><h4>Details of the seller</h4></p>
-    {{ $advertisement->owner_id }}
-
-    {{ $user->name }}
-
+    <p><h5>Details of the seller</h5></p>
+    <p>Name: {{ $user->name }}</p>
+    @if ($user->location != null)
+    	<p>Location: {{ $user->location }}</p>
+    @endif
 
     @if ($advertisement->owner_id == Auth::user()->id)
 	   <hr>
