@@ -4,9 +4,7 @@
 
 
 @if (count($user))
-            {{--@if($user->id == Auth::user()->id) <!-- pode editar! -->--}}
-            {{--@endif--}}
-            
+
             @if ($user->profile_photo != null)
                 <p>Profile Foto: {{ $user->profile_photo }}</p>
             @endif
@@ -20,8 +18,12 @@
                 <p>Presentation: {{ $user->presentation }}</p>
             @endif
 
+            @if($user->id == Auth::user()->id)
+            <a class="btn btn-xs btn-primary" href="{{route('users.edit', ['id' => $user->id])}}"><em class="fa fa-pencil"></em></a>
+            @endif
+
             <th>
-            @if ($user->admin==1) Yes @else No @endif
+            @if ($user->admin==1) Administrator:Yes @else No @endif
 
             </th>
             <td>{{ $user->created_at }}</td>            
