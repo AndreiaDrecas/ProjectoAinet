@@ -43,7 +43,8 @@
 @endif
 
 {!! Form::open(['url' => 'comments']) !!}
-
+{!! Form::hidden('advertisement_id',16) !!}
+{!! Form::hidden('parent_id',1) !!}
    <div class="form-group">
         {!! Form::label('comment', 'Comment:') !!}
         {!! Form::text('comment', null,['class' => 'form-control']) !!}
