@@ -13,13 +13,12 @@
                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                  {{ csrf_field() }}
 
-<<<<<<< HEAD
                  <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">            
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                             <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Enter your fullname">
-=======
+
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">            
                         <div class="cols-sm-15">
                             <div class="input-group">
@@ -31,7 +30,7 @@
                                 <strong>{{ $errors->first('name') }}</strong>
                             </span>
                             @endif
->>>>>>> 4e351faaed5895fabad441dcdbc04d067eb05bd0
+
                         </div>
                         @if ($errors->has('name'))
                         <span class="help-block">
@@ -41,19 +40,19 @@
                     </div>
                 </div>
 
-<<<<<<< HEAD
+
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <div class="cols-md-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
                             <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Enter your email">
-=======
+
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                         <div class="cols-md-15">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Enter your email">
->>>>>>> 4e351faaed5895fabad441dcdbc04d067eb05bd0
+
 
                         </div>
                         @if ($errors->has('email'))
@@ -64,14 +63,13 @@
                     </div>
                 </div>
 
-<<<<<<< HEAD
                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 
                     <div class="cols-md-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                             <input id="password" type="password" class="form-control" name="password" placeholder="Enter your password">
-=======
+
                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                         <div class="cols-md-15">
                             <div class="input-group">
@@ -83,7 +81,7 @@
                                 <strong>{{ $errors->first('password') }}</strong>
                             </span>
                             @endif
->>>>>>> 4e351faaed5895fabad441dcdbc04d067eb05bd0
+
                         </div>
                         @if ($errors->has('password'))
                         <span class="help-block">
@@ -93,19 +91,18 @@
                     </div>
                 </div>
 
-<<<<<<< HEAD
                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                     <div class="cols-md-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                             <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" placeholder="Enter your password confirmation">
-=======
+
                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                         <div class="cols-md-15">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                                 <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" placeholder="Enter your password confirmation">
->>>>>>> 4e351faaed5895fabad441dcdbc04d067eb05bd0
+
 
                             @if ($errors->has('password_confirmation'))
                             <span class="help-block">
@@ -116,7 +113,6 @@
                     </div>
                 </div>
 
-<<<<<<< HEAD
                 <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
                     <div class="cols-sm-10">
                         <div class="input-group">
@@ -129,7 +125,7 @@
                             </span>
                             @endif
                         </div>
-=======
+
                     <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
                         <div class="cols-sm-15">
                             <div class="input-group">
@@ -184,7 +180,7 @@
                                 @endif
                             </div>
                         </div> 
->>>>>>> 4e351faaed5895fabad441dcdbc04d067eb05bd0
+
                     </div>
                 </div>
 

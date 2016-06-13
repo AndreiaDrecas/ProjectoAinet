@@ -84,4 +84,5 @@ class AuthController extends Controller
             'presentation' => $data['presentation'],
         ]);
     }
+
 }

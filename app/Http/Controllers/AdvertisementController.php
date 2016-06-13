@@ -69,4 +69,12 @@ class AdvertisementController extends Controller
         return redirect('advertisements');
     } 
 
+    public function block($id)
+    {
+        $advertisement = Advertisement::findorfail($id);
+        $advertisement->blocked = $advertisement->blocked == 1 ? 0 : 1;
+        $advertisement->save();
+        return redirect('advertisements');
+    }
+
 }

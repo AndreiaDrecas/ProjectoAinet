@@ -62,4 +62,12 @@ class UserController extends Controller
    {
      return view('users.edit', compact('user'));
    }
+
+   public function block($id)
+   {
+        $user = User::findorfail($id);
+        $user->blocked = $user->blocked == 1 ? 0 : 1;
+        $user->save();
+        return redirect('users');
+   }
 }
