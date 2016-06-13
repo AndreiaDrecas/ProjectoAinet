@@ -11,11 +11,6 @@
 |
 */
 
-Route::controllers([
-    'auth' => 'Auth\AuthController',
-    'password' => 'Auth\PasswordController'
-    ]);
-
 Route::resource('advertisements','AdvertisementController');
 Route::resource('users','UserController');
 
@@ -34,6 +29,9 @@ Route::get('dashboard', [
 
 
 Route::get('/', 'PagesController@index');
+
+Route::post('/users/block/{id}', ['as' => 'users.block', 'uses' =>'UserController@block']);
+Route::post('/advertisements/block/{id}', ['as' => 'advertisements.block', 'uses' =>'AdvertisementController@block']);
 
 
 

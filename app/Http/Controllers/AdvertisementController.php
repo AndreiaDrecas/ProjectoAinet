@@ -70,6 +70,7 @@ class AdvertisementController extends Controller
         return redirect('advertisements');
     } 
 
+
     private function syncTags(Advertisement $advertisement, array $tags)
     {
         $advertisement->tags()->sync($tags);
@@ -82,6 +83,13 @@ class AdvertisementController extends Controller
         $this->syncTags($advertisement,$request->input('tag_list'));
 
         return $advertisement;
+
+    public function block($id)
+    {
+        $advertisement = Advertisement::findorfail($id);
+        $advertisement->blocked = $advertisement->blocked == 1 ? 0 : 1;
+        $advertisement->save();
+        return redirect('advertisements');
     }
 
 }
