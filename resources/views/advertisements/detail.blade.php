@@ -41,6 +41,24 @@
 @else
     <h2>No advertisement found</h2>
 @endif
+
+{!! Form::open(['url' => 'comments']) !!}
+
+   <div class="form-group">
+        {!! Form::label('comment', 'Comment:') !!}
+        {!! Form::text('comment', null,['class' => 'form-control']) !!}
+    </div>
+
+    {!! Form::submit('adicionar',['class' => 'btn btn-primary form-control'] ) !!}
+{!! Form::close() !!}
+
+@if (count($comments))
+ @foreach ($comments as $comment)
+    @if ($comment->advertisement_id == $advertisement->id)
+        {{ $comment->comment }}
+    @endif
+ @endforeach
+@endif
 </div>
 
 @endsection

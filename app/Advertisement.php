@@ -53,5 +53,9 @@ class Advertisement extends Model
         return $this->tags->lists('id')->all();
     }
 
+    public function comments(){
+        return $this->belongsTo('App\Comment');
+    }
+
     
 }

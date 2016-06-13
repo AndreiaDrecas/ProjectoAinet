@@ -13,6 +13,7 @@
 
 Route::resource('advertisements','AdvertisementController');
 Route::resource('users','UserController');
+Route::resource('comments','CommentController');
 
 
 

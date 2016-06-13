@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Advertisement;
 use App\Tag;
+use App\Comment;
 use App\Http\Requests;
 use App\Http\Requests\AdvertisementRequest;
 use Illuminate\Http\Request;
@@ -48,7 +49,8 @@ class AdvertisementController extends Controller
     {      
 
         $user = User::findorfail($advertisement->owner_id);
-        return view('advertisements.detail',compact('advertisement', 'user'));
+        $comments = Comment::latest('updated_at')->get();
+        return view('advertisements.detail',compact('advertisement', 'user','comments'));
     }
 
     public function edit(Advertisement $advertisement)
@@ -79,7 +81,7 @@ class AdvertisementController extends Controller
     private function createAdvertisement(AdvertisementRequest $request)
     {
         $advertisement = $request->user()->advertisements()->create($request->all());
-
+        
         $this->syncTags($advertisement,$request->input('tag_list'));
 
         return $advertisement;
