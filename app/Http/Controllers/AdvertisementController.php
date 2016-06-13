@@ -9,7 +9,7 @@ use App\Http\Requests;
 use App\Http\Requests\AdvertisementRequest;
 use Illuminate\Http\Request;
 use Illuminate\HttpResponse;
-
+use App\User;
 
 class AdvertisementController extends Controller
 {
@@ -46,8 +46,9 @@ class AdvertisementController extends Controller
 
     public function show(Advertisement $advertisement)
     {      
-        $tags = Tag::lists('name', 'id');
-        return view('advertisements.detail',compact('advertisement','tags'));
+
+        $user = User::findorfail($advertisement->owner_id);
+        return view('advertisements.detail',compact('advertisement', 'user'));
     }
 
     public function edit(Advertisement $advertisement)
@@ -59,9 +60,7 @@ class AdvertisementController extends Controller
     public function update(Advertisement $advertisement, AdvertisementRequest $request)
     {
         $advertisement->update($request->all());
-
         $this->syncTags($advertisement,$request->input('tag_list'));
-
         return redirect('advertisements');
     }
 

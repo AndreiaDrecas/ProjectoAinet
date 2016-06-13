@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Advertisement;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
@@ -24,6 +26,8 @@ class PagesController extends Controller
 
      public function profile()
     {     
-            return view('pages.profile',compact('user'));
+        $user = User::find(Auth::user()->id);
+        $advertisements = Advertisement::latest('available_on')->available()->get();    
+        return view('pages.profile',compact('user','advertisements'));
     }
 }
