@@ -84,6 +84,7 @@ class AdvertisementController extends Controller
 
         return $advertisement;
 
+    }
     public function block($id)
     {
         $advertisement = Advertisement::findorfail($id);

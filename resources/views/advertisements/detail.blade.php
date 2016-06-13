@@ -26,8 +26,7 @@
     {{ $user->name }}
 
 
-    <p><h5>Details of the seller</h5></p>
-    <p>Name: {{ $user->name }}</p>
+    
     @if ($user->location != null)
     	<p>Location: {{ $user->location }}</p>
     @endif
