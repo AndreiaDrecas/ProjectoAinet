@@ -19,8 +19,6 @@
 <p>Location: {{ $user->location }}</p>
 @if ($user->profile_url != null)
 <p>Profile URL: {{ $user->profile_url }}</p>
-@endif
-@if ($user->presentation != null)
 <p>Presentation: {{ $user->presentation }}</p>
 @endif
 <p>
