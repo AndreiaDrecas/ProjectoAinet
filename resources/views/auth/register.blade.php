@@ -112,6 +112,7 @@
                                 </div>
 
 
+<<<<<<< HEAD
                            
                             <div class="form-group{{ $errors->has('presentation') ? ' has-error' : '' }}">
                             <div class="cols-sm-10">
@@ -124,6 +125,20 @@
                                         <strong>{{ $errors->first('presentation') }}</strong>
                                     </span>
                                     @endif
+=======
+                                <div class="form-group{{ $errors->has('presentation') ? ' has-error' : '' }}">
+                                    <div class="col-md-15"> 
+                                        <label class="col-md-4 control-label">Presentation</label>
+                                        <div class="col-md-6">
+                                            <textarea class="form-control" style="min-width: 100%"></textarea>
+                                            @if ($errors->has('presentation'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('presentation') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                    </div> 
+>>>>>>> 81b9b90a84ba04a796575fb238203f6c3bc90f14
                                 </div>
 
 

@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
-    
-
     /**
      * Show the application dashboard.
      *
