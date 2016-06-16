@@ -17,9 +17,9 @@
  <!-- Nav Bar -->
  @include('common.nav')
 
-<h1 align="center">URBAN FARMERS' MARKET</h1>
+ <h1 align="center">URBAN FARMERS' MARKET</h1>
  <!-- Search bar -->
-<div class="container">
+ <div class="container">
   <div class="row" >
     <div class="navbar-form center" role="search">
       {{ Form::open(['route' => ['advertisements.search'], 'method' => 'post', 'class' => 'inline']) }} 
@@ -34,29 +34,26 @@
 
 <div>
   <button type="submit" class="btn btn-primary">Users Products</button>
-<div>
+  <div>
 
-@if (Auth::user())
-<div class="container">
-  <form class="form-inline">
-    <a class="btn btn-primary" href="{{url ('advertisements/create')}}">Create Advertisement</a>
-  </form>
-</div>
-@endif
-<div class="container">
-  @if (Session::has('flash_message'))
-  <div class="alert alert-success"> 
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>{{ Session::get('flash_message') }}</div>
+    @if (Auth::user())
+    <div class="container">
+      <form class="form-inline">
+        <a class="btn btn-primary" href="{{url ('advertisements/create')}}">Create Advertisement</a>
+      </form>
+    </div>
     @endif
+    <div class="container">
+      @if (Session::has('flash_message'))
+      <div class="alert alert-success"> 
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>{{ Session::get('flash_message') }}</div>
+        @endif
 
-    @yield('content')
+        @yield('content')
 
+      </div>
+    </div> 
   </div>
-
-</div> 
-
-</div>
-
 </div>
 <!-- Footer -->
 @include('common.footer')
