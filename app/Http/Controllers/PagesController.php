@@ -22,7 +22,7 @@ class PagesController extends Controller
     }
 
 
-     public function profile()
+    public function profile()
     {     
         $user = User::find(Auth::user()->id);
         $advertisements = Advertisement::latest('available_on')->available()->get();    
