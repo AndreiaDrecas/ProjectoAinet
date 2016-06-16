@@ -15,7 +15,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'location' , 'profile_photo' , 'presentation', 'profile_url'
+        'name', 
+        'email', 
+        'password', 
+        'location' , 
+        'profile_photo', 
+        'presentation', 
+        'profile_url'
     ];
 
     /**
@@ -41,9 +47,17 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        if($this->admin == 1)
+        if ($this->admin == 1)
             return true;
         return false;
+    }
+
+    public function isBlock()
+    {
+       if ($this->blocked == 1)
+            return true;
+        return false;
+
     }
 
 }

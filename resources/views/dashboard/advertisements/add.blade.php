@@ -53,9 +53,6 @@
         placeholder="Quantity" value="" />
     </div>
     
-    
-    
-
     <div class="form-group">
         <button type="submit" class="btn btn-primary" name="ok">Add</button>
         <button type="btn btn-danger" href="{{url('advertisements')}}">Cancel</button>

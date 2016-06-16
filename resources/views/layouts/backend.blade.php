@@ -16,19 +16,24 @@
 
  <!-- Nav Bar -->
  @include('common.nav')
-<!-- /navbar -->
 
 <h1 align="center">URBAN FARMERS' MARKET</h1>
-<!-- Search bar -->
-<div class="container">
-  <div class="row">
-    <form class="navbar-form center" role="search">
-      <div class="col-md-3">
-        <input type="text" class="form-control" placeholder="Search">
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-  </div>
+ <!-- Search bar -->
+  <div class="container">
+    <div class="row" >
+      <div class="navbar-form center" role="search">
+ 
+  {{ Form::open(['route' => ['advertisements.search'], 'method' => 'post', 'class' => 'inline']) }} 
+  <div class="input">
+      <input id="search" name="search" type="text" class="form-control" placeholder="Search">
+      <button type="submit" class="btn btn-primary" for="search">Submit</button>
+ 
+    {{Form::close()}}
+    </div>
+    </div>
+
+</div>
+  
 </div>
 @if (Auth::user())
 <div class="container">

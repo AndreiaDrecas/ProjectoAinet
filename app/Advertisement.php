@@ -41,7 +41,7 @@ class Advertisement extends Model
     */
 
     public function user(){
-        return $this->belongsTo('App\User'); //owner_id
+        return $this->belongsTo('App\User', 'owner_id'); //owner_id
     }
 
     public function tags(){
@@ -57,5 +57,6 @@ class Advertisement extends Model
         return $this->belongsTo('App\Comment');
     }
 
+   
     
 }

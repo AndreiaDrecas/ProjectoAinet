@@ -7,9 +7,11 @@
     </li>
 
     @if (Auth::guest())
+      
     <form class="form-inline pull-xs-right" role="form" method="POST" action="{{ url('/login') }}">
       {{ csrf_field() }}
       <div class="form-group">
+        
         <label class="sr-only" for="exampleInputEmail2">Email address</label>
         <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Enter your e-mail">
         <label class="sr-only" for="exampleInputPassword2">Password</label>
@@ -20,8 +22,9 @@
       </button>
      
       <a  class="btn btn-success btn-xs" href="{{url('/register')}}">Register</a>
-  
+    
   </form>
+  
     @else
     <div class="dropdown pull-xs-right">
       <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

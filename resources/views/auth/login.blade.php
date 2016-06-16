@@ -1,11 +1,9 @@
-@extends('layouts.app')
+@extends('pages.layouts.backend')
 
 @section('content')
 <div class="container">
     <div class="row main">
         <div class="panel-heading">
-
-
          <div class="main-login main-center">
              <div class="panel-title text-center title">
                 <h1 class="title">Login</h1>

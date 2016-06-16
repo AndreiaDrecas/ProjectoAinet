@@ -7,7 +7,9 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Http\Request;
+use Auth;
 
 class AuthController extends Controller
 {
@@ -81,8 +83,15 @@ class AuthController extends Controller
             'location' => $data['location'],
             'profile_url' => $data['profile_url'],
             'profile_photo' => $data['profile_photo'],
-            'presentation' => $data['presentation'],
+            'presentation' => $data['presentation']
         ]);
     }
 
+    public function authenticated(Request $request, Authenticatable $user)
+    {
+        if ($user->blocked) {
+            Auth::logout();
+            return redirect('/');
+        }
+    }
 }

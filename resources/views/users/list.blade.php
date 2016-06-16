@@ -68,7 +68,6 @@
 </div>
 <div class="form-inline">
     <a class="btn btn-primary" href="{{route('users.create')}}">Create user</a>
-   
 </div>
 
 @else

@@ -9,7 +9,7 @@
 
 <br />
 @if (count($advertisements))
-<table class="table table-striped">
+<table class="table table-striped ">
     <thead>
         <tr>
             <th>name</th>
@@ -18,9 +18,7 @@
     <tbody>
         @foreach ($comments as $comment)
         <tr>
-            <td><a href="{{ url('comments', $comment->id) }}">{{ $comment->comment }}</a></td>
-            
-           
+            <td ><a href="{{ url('comments', $comment->id) }}">{{ $comment->comment }}</a></td>    
         </tr>
         @endforeach
     </table>

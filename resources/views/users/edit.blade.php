@@ -9,7 +9,7 @@
 @endif
 <h1>Edit: {!! $user->name !!}</h1>
 </hr>
-{!! Form::model($user,['method' => 'GET', 'action' => ['UserController@update', $user->id]],['class' => 'form-group']) !!}
+{!! Form::model($user,['method' => 'PATCH', 'action' => ['UserController@update', $user->id]],['class' => 'form-group']) !!}
     @include('users.form', ['submitButtonText' => 'Update User'])
 {!! Form::close() !!}
 </div>

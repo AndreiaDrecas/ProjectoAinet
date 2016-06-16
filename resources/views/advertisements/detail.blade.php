@@ -5,60 +5,75 @@
 @section('content')
 
 <div class="container">
-@if (count($advertisement))
+    @if (count($advertisement))
     <h1> {{ $advertisement->name }} </h1>
     @if($advertisement->description != null)
-	    <article>
-	    	<p>Description:
-	        {{ $advertisement->description }}</p>
-	    </article>
-    @endif
+    <article>
+      <p>Description:
+         {{ $advertisement->description }}</p>
+     </article>
+     @endif
 
-    {{-- $advertisement->created_at --}}
-    <p>Price: {{ $advertisement->price_cents }}</p>
+     {{-- $advertisement->created_at --}}
+     <p>Price: {{ $advertisement->price_cents }}</p>
 
-    {{ $advertisement->available_on }}
+     {{ $advertisement->available_on }}
 
-    <p><h4>Details of the seller</h4></p>
-    {{ $advertisement->owner_id }}
-    
-    
-    {{ $user->name }}
+     <p><h4>Details of the seller</h4></p>
+     {{ $advertisement->owner_id }}
 
 
-    
-    @if ($user->location != null)
-    	<p>Location: {{ $user->location }}</p>
-    @endif
+     {{ $user->name }}
 
-    @if ($advertisement->owner_id == Auth::user()->id)
-	   <hr>
-	    <div>
-	    	<a class="btn btn-xs btn-primary" href="{{route('advertisements.edit', ['id' => $advertisement->id])}}">Edit</a>
-	    </div>
-    @endif
+
+
+     @if ($user->location != null)
+     <p>Location: {{ $user->location }}</p>
+     @endif
+
+
+     @if ($advertisement->owner_id == Auth::guest())
+     <hr>
+     <div>
+      <a class="btn btn-xs btn-primary" href="{{route('advertisements.edit', ['id' => $advertisement->id])}}">Edit Advertisement</a>
+  </div>   
+  @else
+  @if ($advertisement->owner_id == Auth::user()->id)
+  <hr>
+  <div>
+    <a class="btn btn-xs btn-primary" href="{{route('advertisements.edit', ['id' => $advertisement->id])}}">Edit Advertisement</a>
+</div> 
+@endif
+@endif
+
 
 @else
-    <h2>No advertisement found</h2>
+<h2>No advertisement found</h2>
+
 @endif
 
 {!! Form::open(['url' => 'comments']) !!}
-{!! Form::hidden('advertisement_id',16) !!}
+{!! Form::hidden('advertisement_id',$advertisement->id) !!}
 {!! Form::hidden('parent_id',1) !!}
-   <div class="form-group">
-        {!! Form::label('comment', 'Comment:') !!}
-        {!! Form::text('comment', null,['class' => 'form-control']) !!}
-    </div>
+<br></br>
+<div class="form-group">
+    <h3>Comments:</h3>
+    {!! Form::textarea('comment', '') !!}
+</div>
 
-    {!! Form::submit('adicionar',['class' => 'btn btn-primary form-control'] ) !!}
+<div class="btn btn-xs ">
+    {!! Form::submit('Add Comment',['class' => 'btn  btn-primary form-control'] ) !!}
+</div>
+
 {!! Form::close() !!}
 
 @if (count($comments))
- @foreach ($comments as $comment)
-    @if ($comment->advertisement_id == $advertisement->id)
-        {{ $comment->comment }}
-    @endif
- @endforeach
+@foreach ($comments as $comment)
+@if ($comment->advertisement_id == $advertisement->id)
+{{ $comment->comment }}
+@endif
+@endforeach
+
 @endif
 </div>
 

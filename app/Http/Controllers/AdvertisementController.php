@@ -11,6 +11,7 @@ use App\Http\Requests\AdvertisementRequest;
 use Illuminate\Http\Request;
 use Illuminate\HttpResponse;
 use App\User;
+use DB;
 
 class AdvertisementController extends Controller
 {
@@ -94,5 +95,19 @@ class AdvertisementController extends Controller
         $advertisement->save();
         return redirect('advertisements');
     }
+
+     public function search(Request $request)
+    {
+        $filter = $request->input('search');
+        $advertisements = Advertisement::whereHas('user', function($query) use($filter){
+            $query->where('location', 'LIKE', '%' . $filter . '%');
+        })
+        ->orWhere('name', 'LIKE', '%' . $filter . '%')
+        ->orWhere('description', 'LIKE', '%' . $filter . '%')->distinct()->get();
+        
+
+        return view('pages.index', compact('advertisements'));
+    }
+
 
 }

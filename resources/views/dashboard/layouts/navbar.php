@@ -8,7 +8,7 @@
                 <select class="form-control" id="location">
                     <option selected>Location</option>
                     <option value="1">Portugal</option>
-                    <option value="2">Dinamarcaasd</option>
+                    <option value="2">Dinamarca</option>
                 </select>
             </div>
             <div class="form-group inline">
