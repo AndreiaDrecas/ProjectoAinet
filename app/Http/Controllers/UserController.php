@@ -11,7 +11,7 @@
 
         public function __construct()
         {
-                $this->middleware('admin',['except' => ['index', 'show']]);
+            $this->middleware('admin',['except' => ['index', 'show']]);
         }
         
         public function index()
@@ -21,7 +21,7 @@
         }
 
 
-         public function register()
+        public function register()
         {
             return view('register');
         }
@@ -37,7 +37,7 @@
                 'email' => 'required|email|unique:users,email,'.$request->id,
                 'password' => 'required|min:8',
                 'password_confirmation' => 'required|min:8',
-            ]);
+                ]);
 
             User::create($this);
 
@@ -58,19 +58,19 @@
             return redirect('users');
         }    
 
-       public function edit(User $user)
-       {
-         return view('users.edit', compact('user'));
-       }
+        public function edit(User $user)
+        {
+           return view('users.edit', compact('user'));
+        }
 
        public function block($id)
        {
-            $user = User::findorfail($id);
-            $user->blocked = $user->blocked == 1 ? 0 : 1;
-            $user->save();
-            return redirect('users');
-       }
-
-
-       
+        $user = User::findorfail($id);
+        $user->blocked = $user->blocked == 1 ? 0 : 1;
+        $user->save();
+        return redirect('users');
     }
+
+
+
+}
