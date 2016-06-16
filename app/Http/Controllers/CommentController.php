@@ -37,9 +37,7 @@ class CommentController extends Controller
      public function store(CommentRequest $request)
     {    
         $this->createComment($request);
-
         //Comment::create($request->all());
-
          \Session::flash('flash_message', 'Your comment has been created!');
        
         return redirect('advertisements');
@@ -56,13 +54,12 @@ class CommentController extends Controller
     public function edit(Comment $comment)
     {
         $tags = Tag::lists('name', 'id');
-        return view('advertisements.edit', compact('comment','tags'));
+        return view('comments.edit', compact('comment','tags'));
     }
 
     public function update(Comment $comment, CommentRequest $request)
     {
         $comment->update($request->all());
-        $this->syncTags($comment,$request->input('tag_list'));
         return redirect('advertisements');
     }
 
@@ -74,10 +71,9 @@ class CommentController extends Controller
 
      private function createComment(CommentRequest $request)
     {
-        //$comment = $request->user()->comments();
-        $comment = $request->user()->comments()->create($request->all());
+        //$comment = $request->user()->comments()->create($request->all());
+        $comment = $request->advertisement()->comment()->create($request->all());
 
-        
         return $comment;
 
     }

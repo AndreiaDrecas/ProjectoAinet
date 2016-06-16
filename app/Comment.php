@@ -15,10 +15,13 @@ class Comment extends Model
 
 
 
-     public function user(){
-        return $this->hasManyThrough('App\Comment','App\User', 'advertisement_id','user_id');
+    public function user(){
+        return $this->belongsTo('App/User');
     }
 
+    public function advertisement(){
+        return $this->belongsTo('App/Advertisement');
+    }
     
 
 }
