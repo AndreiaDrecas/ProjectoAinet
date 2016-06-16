@@ -18,7 +18,8 @@ class AdvertisementController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index','show']]);
+        $this->middleware('auth', ['except' => ['index','show','search']]);
+
     }
     
     public function index()
@@ -35,13 +36,13 @@ class AdvertisementController extends Controller
         return view('advertisements.add', compact('tags'));
     }
 
-     public function store(AdvertisementRequest $request)
+    public function store(AdvertisementRequest $request)
     {    
         
         $this->createAdvertisement($request);
 
         \Session::flash('flash_message', 'Your advertisement has been created!');
-       
+        
         return redirect('advertisements');
     }
 
@@ -70,7 +71,7 @@ class AdvertisementController extends Controller
         return redirect('advertisements');
     }
 
-     public function destroy(Advertisement $advertisement){
+    public function destroy(Advertisement $advertisement){
 
         $advertisement->delete();
         return redirect('advertisements');
@@ -99,7 +100,7 @@ class AdvertisementController extends Controller
         return redirect('advertisements');
     }
 
-     public function search(Request $request)
+    public function search(Request $request)
     {
         $filter = $request->input('search');
         $advertisements = Advertisement::whereHas('user', function($query) use($filter){
@@ -108,7 +109,6 @@ class AdvertisementController extends Controller
         ->orWhere('name', 'LIKE', '%' . $filter . '%')
         ->orWhere('description', 'LIKE', '%' . $filter . '%')->distinct()->get();
         
-
         return view('pages.index', compact('advertisements'));
     }
 

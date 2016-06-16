@@ -6,14 +6,15 @@ use App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 
+
 class UserController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('admin',['except' => ['index']]);
     }
-    
+
     public function index()
     {
         $users = User::latest('created_at')->get();
@@ -21,7 +22,7 @@ class UserController extends Controller
     }
 
 
-     public function register()
+    public function register()
     {
         return view('register');
     }
@@ -37,45 +38,36 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,'.$request->id,
             'password' => 'required|min:8',
             'password_confirmation' => 'required|min:8',
-        ]);
+            ]);
 
         User::create($this);
 
         return redirect('dashboard/users');
-
     }
 
-    public function show(User $user)
+    public function show($id)
     {
+        $user = User::findorfail($id);
         return view('users.details', compact('user'));
-        
+            
     }
 
-    public function update(User $user, Request $request)
+    public function destroy($id)
     {
-        $user->update($request->all());
-        return redirect('users');
-    }
-
-    public function destroy(User $user)
-    {
-         $user->delete();
+        User::destroy($id);
         return redirect('users');
     }    
 
-   public function edit(User $user)
-   {
-     return view('users.edit', compact('user'));
-   }
+    public function edit(User $user)
+    {
+        return view('users.edit', compact('user'));
+    }
 
-   public function block(User $user)
-   {
+    public function block($id)
+    {
         $user = User::findorfail($id);
         $user->blocked = $user->blocked == 1 ? 0 : 1;
         $user->save();
         return redirect('users');
-   }
-
-
-   
+    }
 }

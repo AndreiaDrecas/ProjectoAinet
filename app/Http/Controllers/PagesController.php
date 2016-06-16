@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
-    
-
     /**
      * Show the application dashboard.
      *
@@ -24,10 +22,11 @@ class PagesController extends Controller
     }
 
 
-     public function profile()
+    public function profile()
     {     
         $user = User::find(Auth::user()->id);
         $advertisements = Advertisement::latest('available_on')->available()->get();    
         return view('pages.profile',compact('user','advertisements'));
     }
+
 }
