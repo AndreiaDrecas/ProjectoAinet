@@ -23,18 +23,24 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Email</th>   
-                <th>Admin</th>         
+                <th>Email</th> 
+@if (!Auth::guest())
+                <th>Admin</th>
+                
                 <th>Registered At</th>
+
                 <th text-align=center><em class="fa fa-cog"></em></th>
             </tr>
         </thead>
+@endif
         <tbody>
+
             @foreach ($users as $user)
-            
+
             <tr>
-                <td><a href="users/{{ $user->id }}">{{ $user->name }} </a></td>
+                <td><a href="users/{{ $user->id}}/profile">{{ $user->name }} </a></td>
                 <td>{{ $user->email }}</td>
+            @if (!Auth::guest())
                 <th>
                 
                     @if ($user->admin==1) Yes @else No @endif
@@ -61,15 +67,20 @@
                     @endif
                     @endif
                     {{ Form::close() }}
+            @endif    
                 </td>
             </tr>
+ 
             @endforeach
         </tbody>
     </table>
 </div>
+
+@if (!Auth::guest())
 <div class="form-inline">
     <a class="btn btn-primary" href="{{route('users.create')}}">Create user</a>
 </div>
+@endif
 
 @else
 <h2>No users found</h2>
