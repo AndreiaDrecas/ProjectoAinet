@@ -28,9 +28,9 @@
             <td>{{ $advertisement->created_at }}</td> 
             <td>{{ $advertisement->owner_id }} </td>  
             <td> @foreach ($advertisement->tags as $tag)
-                    {{ $tag->name }}
+                {{ $tag->name }}
                 @endforeach      
-             </td>          
+            </td>          
             <td>
                 <a class="btn btn-xs btn-primary" href="{{route('advertisements.edit', ['id' => $advertisement->id])}}">Edit</a>
 

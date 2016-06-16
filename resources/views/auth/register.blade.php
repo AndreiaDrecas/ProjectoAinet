@@ -9,7 +9,7 @@
             <div class="main-login main-center">
                 <div class="panel-title text-center">
                     <h1 class="title">Register</h1>
-                </div>
+</div>
 
                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                    {{ csrf_field() }}
@@ -112,21 +112,19 @@
                                 </div>
 
 
-                                <div class="form-group{{ $errors->has('presentation') ? ' has-error' : '' }}">
-                                    <div class="col-md-15"> 
-                                        <label class="col-md-4 control-label">Presentation</label>
-                                        <div class="col-md-6">
-                                            <textarea class="form-control" style="min-width: 100%"></textarea>
-                                            @if ($errors->has('presentation'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('presentation') }}</strong>
-                                            </span>
-                                            @endif
-                                        </div>
-                                    </div> 
+                           
+                            <div class="form-group{{ $errors->has('presentation') ? ' has-error' : '' }}">
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input id="presentation" type="text" class="form-control" name="presentation"  placeholder="Enter your presentation">
 
+                                    @if ($errors->has('presentation'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('presentation') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
-                            </div>
 
 
 
