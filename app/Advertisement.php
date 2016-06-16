@@ -54,7 +54,7 @@ class Advertisement extends Model
     }
 
     public function comments(){
-        return $this->belongsTo('App\Comment');
+       return $this->hasMany(Comment::class);
     }
 
    

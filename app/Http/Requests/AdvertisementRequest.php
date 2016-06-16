@@ -31,6 +31,7 @@ class AdvertisementRequest extends Request
             'quantity' => 'required',
             'available_on' => 'required|date',
 
+
         ];
     }
 }

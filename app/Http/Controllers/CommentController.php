@@ -36,7 +36,12 @@ class CommentController extends Controller
 
      public function store(CommentRequest $request)
     {    
-        $this->createComment($request);
+        $comment = new Comment($request->all());
+        $comment->user_id = Auth::user()->id;
+
+        $advertisement = Advertisement::findOrFail($comment->advertisement_id);
+        $advertisement->comments()->save($comment);
+        //$this->createComment($request);
         //Comment::create($request->all());
          \Session::flash('flash_message', 'Your comment has been created!');
        
@@ -67,14 +72,5 @@ class CommentController extends Controller
 
         $comment->delete();
         return redirect('advertisements');
-    } 
-
-     private function createComment(CommentRequest $request)
-    {
-        //$comment = $request->user()->comments()->create($request->all());
-        $comment = $request->advertisement()->comment()->create($request->all());
-
-        return $comment;
-
     }
 }

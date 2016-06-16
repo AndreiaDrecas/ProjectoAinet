@@ -50,7 +50,10 @@ class AdvertisementController extends Controller
     {      
 
         $user = User::findorfail($advertisement->owner_id);
-        $comments = Comment::latest('updated_at')->get();
+        $comments = Comment::join('users','comments.user_id','=','users.id')
+            ->where('advertisement_id','=',$advertisement->id)
+            ->get();
+
         return view('advertisements.detail',compact('advertisement', 'user','comments'));
     }
 
