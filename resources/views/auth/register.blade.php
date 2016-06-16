@@ -9,7 +9,7 @@
             <div class="main-login main-center">
                 <div class="panel-title text-center">
                     <h1 class="title">Register</h1>
-                </div>
+</div>
 
                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                    {{ csrf_field() }}
@@ -112,6 +112,20 @@
                                 </div>
 
 
+<<<<<<< HEAD
+                           
+                            <div class="form-group{{ $errors->has('presentation') ? ' has-error' : '' }}">
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input id="presentation" type="text" class="form-control" name="presentation"  placeholder="Enter your presentation">
+
+                                    @if ($errors->has('presentation'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('presentation') }}</strong>
+                                    </span>
+                                    @endif
+=======
                                 <div class="form-group{{ $errors->has('presentation') ? ' has-error' : '' }}">
                                     <div class="col-md-15"> 
                                         <label class="col-md-4 control-label">Presentation</label>
@@ -124,8 +138,8 @@
                                             @endif
                                         </div>
                                     </div> 
+>>>>>>> 81b9b90a84ba04a796575fb238203f6c3bc90f14
                                 </div>
-                            </div>
 
 
 

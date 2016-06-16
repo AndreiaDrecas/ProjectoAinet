@@ -6,14 +6,73 @@
     use Illuminate\Http\Request;
     use App\User;
 
+<<<<<<< HEAD
+class UserController extends Controller
+{
+
+    public function __construct()
+    {
+        $this->middleware('admin',['except' => ['index']]);
+    }
+    
+    public function index()
+    {
+        $users = User::latest('created_at')->get();
+        return view('users.list', compact('users'));
+    }
+
+
+    public function register()
+    {
+        return view('register');
+    }
+
+    public function create()
+    {
+        return view('users.add');
+    }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email|unique:users,email,'.$request->id,
+            'password' => 'required|min:8',
+            'password_confirmation' => 'required|min:8',
+            ]);
+
+        User::create($this);
+=======
     class UserController extends Controller
     {
+>>>>>>> 81b9b90a84ba04a796575fb238203f6c3bc90f14
 
         public function __construct()
         {
             $this->middleware('admin',['except' => ['index', 'show']]);
         }
         
+<<<<<<< HEAD
+    }
+
+    public function destroy($id)
+    {
+        User::destroy($id);
+        return redirect('users');
+    }    
+
+    public function edit(User $user)
+    {
+       return view('users.edit', compact('user'));
+    }
+
+   public function block($id)
+   {
+    $user = User::findorfail($id);
+    $user->blocked = $user->blocked == 1 ? 0 : 1;
+    $user->save();
+    return redirect('users');
+   }
+=======
         public function index()
         {
             $users = User::latest('created_at')->get();
@@ -73,4 +132,5 @@
 
 
 
+>>>>>>> 81b9b90a84ba04a796575fb238203f6c3bc90f14
 }

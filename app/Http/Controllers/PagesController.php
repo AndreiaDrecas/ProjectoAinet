@@ -28,4 +28,5 @@ class PagesController extends Controller
         $advertisements = Advertisement::latest('available_on')->available()->get();    
         return view('pages.profile',compact('user','advertisements'));
     }
+
 }
