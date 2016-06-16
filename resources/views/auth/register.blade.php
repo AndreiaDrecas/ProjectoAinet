@@ -9,11 +9,11 @@
             <div class="main-login main-center">
                 <div class="panel-title text-center">
                     <h1 class="title">Register</h1>
-</div>
+                </div>
 
                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
-                   {{ csrf_field() }}
-                   <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">            
+                 {{ csrf_field() }}
+                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">            
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -83,78 +83,75 @@
                                     @endif
                                 </div>
 
-                                     <div class="form-group{{ $errors->has('profile_photo') ? ' has-error' : '' }}">
-                            <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input id="profile_photo" type="text" class="form-control" name="profile_photo" value="{{ old('profile_photo') }}" placeholder="Enter your profile photo">
-
-                                    @if ($errors->has('profile_photo'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('profile_photo') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-
-
-                                <div class="form-group{{ $errors->has('profile_url') ? ' has-error' : '' }}">
-                                    <div class="col-md-15">                             
+                                <div class="form-group{{ $errors->has('profile_photo') ? ' has-error' : '' }}">
+                                    <div class="cols-sm-10">
                                         <div class="input-group">
-                                            <span class="input-group-addon" id="basic-addon3">Profile URL</span>
-                                            <input type="text" class="form-control" name="profile_url" id="basic-url" aria-describedby="basic-addon3" placeholder="myPersonalPage.com">
-                                            @if ($errors->has('profile_url'))
-                                            <!--<span class="help-block">-->
-                                            <strong>{{ $errors->first('profile_url') }}</strong>
-                                            <!--</span>-->
+                                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                            <input id="profile_photo" type="text" class="form-control" name="profile_photo" value="{{ old('profile_photo') }}" placeholder="Enter your profile photo">
+
+                                            @if ($errors->has('profile_photo'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('profile_photo') }}</strong>
+                                            </span>
                                             @endif
+                                        </div>
+
+
+                                        <div class="form-group{{ $errors->has('profile_url') ? ' has-error' : '' }}">
+                                            <div class="col-md-15">                             
+                                                <div class="input-group">
+                                                    <span class="input-group-addon" id="basic-addon3">Profile URL</span>
+                                                    <input type="text" class="form-control" name="profile_url" id="basic-url" aria-describedby="basic-addon3" placeholder="myPersonalPage.com">
+                                                    @if ($errors->has('profile_url'))
+                                                    <!--<span class="help-block">-->
+                                                    <strong>{{ $errors->first('profile_url') }}</strong>
+                                                    <!--</span>-->
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        
+                                        <div class="form-group{{ $errors->has('presentation') ? ' has-error' : '' }}">
+                                            <div class="cols-sm-10">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                                    <input id="presentation" type="text" class="form-control" name="presentation"  placeholder="Enter your presentation">
+
+                                                    @if ($errors->has('presentation'))
+                                                    <span class="help-block">
+                                                        <strong>{{ $errors->first('presentation') }}</strong>
+                                                    </span>
+                                                    @endif
+
+                                                    <div class="form-group{{ $errors->has('presentation') ? ' has-error' : '' }}">
+                                                        <div class="col-md-15"> 
+                                                            <label class="col-md-4 control-label">Presentation</label>
+                                                            <div class="col-md-6">
+                                                                <textarea class="form-control" style="min-width: 100%"></textarea>
+                                                                @if ($errors->has('presentation'))
+                                                                <span class="help-block">
+                                                                    <strong>{{ $errors->first('presentation') }}</strong>
+                                                                </span>
+                                                                @endif
+                                                            </div>
+                                                        </div> 
+                                                    </div>
+
+
+
+                                                    <div class="form-group">
+                                                        <div class="cols-md-6 col-md-offset-4">
+                                                            <button type="submit" class="btn btn-primary">
+                                                                <i class="fa fa-btn fa-user"></i> Register
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-
-<<<<<<< HEAD
-                           
-                            <div class="form-group{{ $errors->has('presentation') ? ' has-error' : '' }}">
-                            <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input id="presentation" type="text" class="form-control" name="presentation"  placeholder="Enter your presentation">
-
-                                    @if ($errors->has('presentation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('presentation') }}</strong>
-                                    </span>
-                                    @endif
-=======
-                                <div class="form-group{{ $errors->has('presentation') ? ' has-error' : '' }}">
-                                    <div class="col-md-15"> 
-                                        <label class="col-md-4 control-label">Presentation</label>
-                                        <div class="col-md-6">
-                                            <textarea class="form-control" style="min-width: 100%"></textarea>
-                                            @if ($errors->has('presentation'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('presentation') }}</strong>
-                                            </span>
-                                            @endif
-                                        </div>
-                                    </div> 
->>>>>>> 81b9b90a84ba04a796575fb238203f6c3bc90f14
-                                </div>
-
-
-
-                            <div class="form-group">
-                                <div class="cols-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fa fa-btn fa-user"></i> Register
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </form>
-    @endsection
+                            </form>
+                            @endsection
