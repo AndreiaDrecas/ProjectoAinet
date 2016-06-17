@@ -38,11 +38,11 @@ class CommentController extends Controller
     {    
         $comment = new Comment($request->all());
         $comment->user_id = Auth::user()->id;
-
+        var_dump($comment->advertisement_id);
         $advertisement = Advertisement::findOrFail($comment->advertisement_id);
+        
         $advertisement->comments()->save($comment);
-        //$this->createComment($request);
-        //Comment::create($request->all());
+
         \Session::flash('flash_message', 'Your comment has been created!');
 
         return redirect('advertisements');

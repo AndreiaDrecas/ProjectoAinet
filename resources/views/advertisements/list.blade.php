@@ -3,12 +3,14 @@
 @section('title', 'List advertisements')
 
 @section('content')
+
 <div>
     <a class="btn btn-primary" href="{{ url('advertisements/create') }}">Create advertisement</a>
 </div>
 
-<br />
+<br><br/>
 @if (count($advertisements))
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -29,34 +31,22 @@
             <td>{{ $advertisement->owner_id }} </td>  
             <td> @foreach ($advertisement->tags as $tag)
                 {{ $tag->name }}
-                @endforeach      
+            @endforeach      
             </td>          
             <td>
                 <a class="btn btn-xs btn-primary" href="{{route('advertisements.edit', ['id' => $advertisement->id])}}">Edit</a>
 
                 {{ Form::open(['route' => ['advertisements.destroy',  $advertisement->id], 'method' => 'delete', 'class' => 'inline']) }}        
-                
-                <div class="form-group">
-                    <button type="submit" class="btn btn-xs btn-danger">Delete</button>
-                </div>
 
-                {{ Form::close() }}
-
-                {{ Form::open(['route' => ['advertisements.block',  $advertisement->id], 'method' => 'post', 'class' => 'inline']) }}     
-
-                @if ($advertisement->blocked == 1)
-                <button type="submit" class="btn btn-xs btn-danger">Blocked</button>
-                @else
-                <button type="submit" class="btn btn-xs btn-success">Block</button>
-                @endif
-
-                {{ Form::close() }}
-
-            </td>
-        </tr>
-        @endforeach
+                    <div class="form-inline">
+                        <button type="submit" class="btn btn-xs btn-danger">Delete</button>
+                    </div>
+                    </td>
+                </tr>
+            @endforeach
     </table>
-    @else
+@else
     <h2>No advertisement found</h2>
-    @endif
-    @endsection
+@endif
+
+@endsection

@@ -23,7 +23,6 @@ class AdvertisementController extends Controller
     
     public function index()
     {
-        //return \Auth::user();
 
         $advertisements = Advertisement::latest('available_on')->available()->get();     
         return view('advertisements.list', compact('advertisements'));
@@ -48,10 +47,10 @@ class AdvertisementController extends Controller
 
     public function show(Advertisement $advertisement)
     {      
-        $user = User::findorfail($advertisement->owner_id);
-        $comments = Comment::join('users','comments.user_id','=','users.id')
-        ->where('advertisement_id','=',$advertisement->id)
-        ->get();
+        
+        $comments = Comment::with(['user', 'replies'])
+             ->where('advertisement_id', $advertisement->id)
+            ->get();
 
 
         return view('advertisements.detail',compact('advertisement', 'comments'));
@@ -125,6 +124,14 @@ class AdvertisementController extends Controller
         ->orWhere('description', 'LIKE', '%' . $filter . '%')->distinct()->get();
         
         return view('pages.index', compact('advertisements'));
+    }
+
+    public function listblocked()
+    {
+        $advertisements=Advertisement::latest('available_on')
+        ->where('blocked', '=',1)->get();
+
+        return view('advertisements.blocked',compact('advertisements'));
     }
 
 }

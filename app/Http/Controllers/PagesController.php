@@ -29,4 +29,11 @@ class PagesController extends Controller
         return view('pages.profile',compact('user','advertisements'));
     }
 
+     public function profileUser($id)
+    {     
+        $user = User::find($id);
+        $advertisements = Advertisement::latest('available_on')->available()->get();    
+        return view('pages.profile',compact('user','advertisements'));
+    }
+
 }
