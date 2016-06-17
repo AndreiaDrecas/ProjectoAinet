@@ -49,7 +49,6 @@ class UserController extends Controller
     {
         $user = User::findorfail($id);
         return view('users.details', compact('user'));
-            
     }
 
     public function destroy($id)
