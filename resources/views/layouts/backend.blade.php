@@ -34,8 +34,8 @@
     @if (Auth::user())
       <div class="container">
         <form class="form-inline">
-          <a class="btn btn-primary" 
-          href="{{url ('advertisements/create')}}">Create Advertisement</a>
+          <p><a class="btn btn-primary" 
+          href="{{url ('advertisements/create')}}">Create Advertisement</a></p>
         </form>
       </div>
     @endif
