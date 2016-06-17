@@ -44,7 +44,6 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-   
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
@@ -65,7 +64,7 @@ class AuthController extends Controller
             'profile_photo' => 'max:255',
             'profile_url' => 'url|max:255',
             'presentation' => 'max:255',
-        ]);
+            ]);
     }
 
     /**
@@ -84,7 +83,7 @@ class AuthController extends Controller
             'profile_url' => $data['profile_url'],
             'profile_photo' => $data['profile_photo'],
             'presentation' => $data['presentation'],
-        ]);
+            ]);
     }
 
     public function authenticated(Request $request, Authenticatable $user)
