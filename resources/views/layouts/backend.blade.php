@@ -21,14 +21,16 @@
  <!-- Search bar -->
 <div class="container">
   <div class="row" >
-    <div class="navbar-form center" role="search">
+    <form class="navbar-form center" role="search">
       {{ Form::open(['route' => ['advertisements.search'], 'method' => 'post', 'class' => 'inline']) }} 
-      <div class="input">
+      <div class="input-group">
         <input id="search" name="search" type="text" class="form-control" placeholder="Search">
-        <button type="submit" class="btn btn-primary" for="search">Submit</button>
-        {{Form::close()}}
       </div>
-    </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        {{Form::close()}}
+      
+  </div>
+    </form>
   </div>
 </div>
 

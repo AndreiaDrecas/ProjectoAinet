@@ -23,8 +23,14 @@ class AdvertisementController extends Controller
     
     public function index()
     {
+        $advertisements=Advertisement::all();
+        $advertisement =array();
+        foreach ($advertisements as $advertisement) {
+            array_push($advertisement,unblockedAdvertisement($advertisements));
 
-        $advertisements = Advertisement::latest('available_on')->available()->get();     
+            }
+
+        //$advertisements = Advertisement::latest('available_on')->available()->get();     
         return view('advertisements.list', compact('advertisements'));
     }
 
@@ -133,6 +139,12 @@ class AdvertisementController extends Controller
         ->where('blocked', '=',1)->get();
 
         return view('advertisements.blocked',compact('advertisements'));
+    }
+
+    public function unblockedAdvertisement($advertisements)
+    {
+        $user=User::findorfail($advertisements->owner_id);
+        $user->blocked == 0 ? 0 : 1;
     }
 
 }
