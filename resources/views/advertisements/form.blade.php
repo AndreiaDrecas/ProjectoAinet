@@ -31,10 +31,19 @@
 
     <div class="form-group">
         {!! Form::label('tag_list', 'Tags:') !!}
-        {!! Form::select('tag_list[]', $tags, null,['class' => 'form-control', 'multiple']) !!}
+        {!! Form::select('tag_list[]', $tags, null,['id' => 'tag_list', 'class' => 'form-control', 'multiple']) !!}
     </div>
 
     <div class="form-inline">
     {!! Form::submit($submitButtonText,['class' => 'btn btn-primary form-control'] ) !!}
         <a class="btn btn-danger" href="{{url('/')}}">Cancel</a>
     </div>
+
+    @section('tag')
+        <script type="text/javascript">
+            $('#tag_list').select2({
+                placeholder: 'Choose a tag',
+                tags: true
+            });
+        </script>
+    @endsection

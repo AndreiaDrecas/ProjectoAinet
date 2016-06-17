@@ -10,6 +10,6 @@ class Tag extends Model
 
     public function advertisements()
     {
-        return $this->belongsToMany('App\Advertisement');
+        return $this->belongsToMany(Advertisement::class);
     }
 }

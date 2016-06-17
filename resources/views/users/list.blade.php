@@ -33,7 +33,7 @@
         <tbody>
             @foreach ($users as $user)
             <tr>
-                <td><a href="users/{{ $user->id }}">{{ $user->name }} </a></td>
+                <td><a href="profile/{{ $user->id }}">{{ $user->name }} </a></td>
                 <td>{{ $user->email }}</td>
                 <th>
                     @if ($user->admin==1) Yes @else No @endif

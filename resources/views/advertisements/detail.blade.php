@@ -1,4 +1,4 @@
-    @extends('pages.layouts.backend')
+@extends('pages.layouts.backend')
 
 @section('title', $advertisement->name)
 
