@@ -1,6 +1,5 @@
 <ul>
     @foreach($comments as $comment)
-
     <li>
         <span>{{$comment->user->name}}</span> {{$comment->comment}}
         @if(count($comment->replies))
@@ -8,5 +7,4 @@
         @endif
     </li>
     @endforeach
-
 </ul>
