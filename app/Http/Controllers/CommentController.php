@@ -45,7 +45,7 @@ class CommentController extends Controller
 
         \Session::flash('flash_message', 'Your comment has been created!');
 
-        return redirect('advertisements');
+        return back();
     }
 
 

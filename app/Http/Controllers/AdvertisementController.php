@@ -18,7 +18,7 @@ class AdvertisementController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index','show','search','blockedAdvertisements']]);
+        $this->middleware('auth', ['except' => ['index','show','search']]);
     }
     
     public function index()
@@ -50,7 +50,7 @@ class AdvertisementController extends Controller
         
         $comments = Comment::with(['user', 'replies'])
              ->where('advertisement_id', $advertisement->id)
-            ->get();
+             ->where('parent_id', null)->get();
 
 
         return view('advertisements.detail',compact('advertisement', 'comments'));
@@ -59,7 +59,6 @@ class AdvertisementController extends Controller
     public function edit(Advertisement $advertisement)
     {
         $tags = Tag::lists('name', 'id');
-        
         return view('advertisements.edit', compact('advertisement','tags'));
     }
 
@@ -127,7 +126,7 @@ class AdvertisementController extends Controller
         return view('pages.index', compact('advertisements'));
     }
 
-    public function blockedAdvertisements()
+    public function listblocked()
     {
         $advertisements=Advertisement::latest('available_on')
         ->where('blocked', '=',1)->get();

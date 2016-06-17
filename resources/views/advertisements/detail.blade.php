@@ -57,11 +57,10 @@
   @endif
   {!! Form::open(['url' => 'comments']) !!}
   {!! Form::hidden('advertisement_id',$advertisement->id) !!}
-  {!! Form::hidden('parent_id',1) !!}
   <br></br>
   <div class="form-group">
     <h3>Comments:</h3>
-    {!! Form::textarea('comment', '') !!}
+    {!! Form::textarea('comment', '', ['rows' => '1']) !!}
   </div>
   <div class="btn btn-xs ">
     {!! Form::submit('Add Comment',['class' => 'btn  btn-primary form-control'] ) !!}
