@@ -4,19 +4,10 @@
 
 
 @if (count($user))
-<<<<<<< HEAD
-
 
 <td></td>
 <td>{{ $user->email }}</td>
 
-
-
-=======
-    <td></td>
-    <td>{{ $user->email }}</td>
-             
->>>>>>> bbba9bd84dcfc288d61b15f2121cc4c5bbd4ccff
 @if ($user->profile_photo != null)
 <p>Profile Foto: {{ $user->profile_photo }}</p>
 @endif
@@ -31,36 +22,27 @@
     @if ($user->admin==1) Administrator:Yes @else No @endif
 </p>
 <p>{{ $user->created_at }}</p>   
-@if($user->id == Auth::user()->id)
+@if ($user->id == Auth::user()->id)
 <a class="btn btn-xs btn-primary" href="{{route('users.edit', ['id' => $user->id])}}"><em class="fa fa-pencil"></em></a>
 @endif         
 
+@if (Auth::user()->admin)
+@if ($user->admin == 0)
+<a class="btn btn-xs btn-danger">Block User</a>
+@endif	
+@endif
+
 <p>               
-<<<<<<< HEAD
- 
     @if (count($advertisements))<br>
     ADVERTISEMENTS:<br>
     @foreach ($advertisements as $advertisement)
-    
     @if ($advertisement->owner_id == Auth::user()->id)
     <a class="btn btn-xs btn-primary" href="{{route('advertisements.show', ['id' => $advertisement->id])}}">show</a>{{ $advertisement->name }}<br>
     @endif
-    
     @endforeach  
     @endif
 </p>
 
-=======
-    @if (count($advertisements))<br>
-    ADVERTISEMENTS:<br>
-        @foreach ($advertisements as $advertisement)
-            @if ($advertisement->owner_id == Auth::user()->id)
-                <a class="btn btn-xs btn-primary" href="{{route('advertisements.show', ['id' => $advertisement->id])}}">show</a>{{ $advertisement->name }}<br>
-            @endif
-        @endforeach  
-    @endif
-</p>
->>>>>>> bbba9bd84dcfc288d61b15f2121cc4c5bbd4ccff
 @else
 <h2>No user found</h2>
 @endif

@@ -20,6 +20,10 @@ Route::get('profile', [
 	'uses' => 'PagesController@profile'
 	]);
 
+Route::get('profile/{id}', [
+	
+	'uses' => 'PagesController@profileUser'
+	]);
 
 Route::get('dashboard', [
 	'middleware' => 'admin', 

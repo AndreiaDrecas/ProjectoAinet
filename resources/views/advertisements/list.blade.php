@@ -3,6 +3,7 @@
 @section('title', 'List advertisements')
 
 @section('content')
+
 <div>
     <a class="btn btn-primary" href="{{ url('advertisements/create') }}">Create advertisement</a>
 </div>
@@ -29,7 +30,7 @@
             <td>{{ $advertisement->owner_id }} </td>  
             <td> @foreach ($advertisement->tags as $tag)
                 {{ $tag->name }}
-                @endforeach      
+            @endforeach      
             </td>          
             <td>
                 <a class="btn btn-xs btn-primary" href="{{route('advertisements.edit', ['id' => $advertisement->id])}}">Edit</a>
