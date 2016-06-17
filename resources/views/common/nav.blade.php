@@ -14,10 +14,14 @@
           <label class="sr-only" for="exampleInputPassword2">Password</label>
           <input id="password" type="password" class="form-control" name="password" placeholder="Enter your password">
         </div>
+
         <button type="submit" class="btn btn-success btn-xs">Login</button>
         <a  class="btn btn-success btn-xs" href="{{url('/register')}}">Register</a>
       </form>
     @else
+     @if (Auth::user()->admin == 1)
+        <a class="btn btn-success pull-xs-center"  href="{{url('/advertisements/blocked')}}">Blocked Advertisements</a>
+        @endif
       <div class="dropdown pull-xs-right">
         <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           {{ Auth::user()->name }}
@@ -26,6 +30,7 @@
         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
           @if (Auth::user()->admin == 1)
             <li><a class="dropdown-item" href="{{ url('/painel') }}">Painel</a></li>
+
           @endif
           <li><a class="dropdown-item" href="{{ url('/profile') }}">Profile</a></li>
           <li><a class="dropdown-item" href="{{ url('/logout') }}">Logout</a></li>
