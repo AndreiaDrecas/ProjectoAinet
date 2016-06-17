@@ -59,7 +59,6 @@ class AdvertisementController extends Controller
         $comments = Comment::join('users','comments.user_id','=','users.id')
         ->where('advertisement_id','=',$advertisement->id)
         ->get();
-    {      
         
         $comments = Comment::with(['user', 'replies'])
              ->where('advertisement_id', $advertisement->id)
@@ -137,7 +136,8 @@ class AdvertisementController extends Controller
             $query->where('location', 'LIKE', '%' . $filter . '%');
         })
         ->orWhere('name', 'LIKE', '%' . $filter . '%')
-        ->orWhere('description', 'LIKE', '%' . $filter . '%')->distinct()->get();
+        ->orWhere('description', 'LIKE', '%' . $filter . '%')->distinct()->get()
+        ->Paginate(2);
 
         return view('pages.index', compact('advertisements'));
     }
@@ -152,7 +152,7 @@ class AdvertisementController extends Controller
 
     public function unblockedAdvertisement($advertisements)
     {
-        $user=User::findorfail($advertisements->owner_id);
+        $user = User::findorfail($advertisements->owner_id);
         $user->blocked == 0 ? 0 : 1;
     }
 
