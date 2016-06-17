@@ -34,7 +34,7 @@ class CommentController extends Controller
         return view('comments.add', compact('tags'));
     }
 
-     public function store(CommentRequest $request)
+    public function store(CommentRequest $request)
     {    
         $comment = new Comment($request->all());
         $comment->user_id = Auth::user()->id;
@@ -43,15 +43,14 @@ class CommentController extends Controller
         $advertisement->comments()->save($comment);
         //$this->createComment($request);
         //Comment::create($request->all());
-         \Session::flash('flash_message', 'Your comment has been created!');
-       
+        \Session::flash('flash_message', 'Your comment has been created!');
+
         return redirect('advertisements');
     }
 
 
     public function show(Comment $comment)
     {      
-
         $user = Comment::findorfail($comment->user_id);
         return view('comments.list',compact('comment', 'user'));
     }
@@ -68,8 +67,8 @@ class CommentController extends Controller
         return redirect('advertisements');
     }
 
-     public function destroy(Comment $comment){
-
+    public function destroy(Comment $comment)
+    {
         $comment->delete();
         return redirect('advertisements');
     }
