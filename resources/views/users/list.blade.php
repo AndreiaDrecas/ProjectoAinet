@@ -14,7 +14,6 @@
                 <div class="col col-xs-6">
                     <h3 class="panel-title">Users</h3>
                 </div>
-
             </div>
         </div>
     </div>

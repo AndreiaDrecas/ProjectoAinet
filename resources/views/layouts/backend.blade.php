@@ -17,9 +17,9 @@
  <!-- Nav Bar -->
  @include('common.nav')
 
- <h1 align="center">URBAN FARMERS' MARKET</h1>
+<h1 align="center">URBAN FARMERS' MARKET</h1>
  <!-- Search bar -->
- <div class="container">
+<div class="container">
   <div class="row" >
     <div class="navbar-form center" role="search">
       {{ Form::open(['route' => ['advertisements.search'], 'method' => 'post', 'class' => 'inline']) }} 
