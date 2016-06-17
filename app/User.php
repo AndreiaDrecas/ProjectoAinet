@@ -5,9 +5,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-
-
-
     protected $table = 'users';
     /**
      * The attributes that are mass assignable.
@@ -37,11 +34,13 @@ class User extends Authenticatable
     *A user can have many advertisements
     *
     */
-    public function advertisements(){
+    public function advertisements()
+    {
         return $this->hasMany('App\Advertisement','owner_id');
     }
 
-    public function comments(){
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
     }
 
@@ -49,14 +48,15 @@ class User extends Authenticatable
     {
         if ($this->admin == 1)
             return true;
+
         return false;
     }
 
     public function isBlock()
     {
-       if ($this->blocked == 1)
-        return true;
-    return false;
-
+        if ($this->blocked == 1)
+            return true;
+        
+        return false;
     }
 }
