@@ -114,4 +114,12 @@ class AdvertisementController extends Controller
         return view('pages.index', compact('advertisements'));
     }
 
+    public function listblocked()
+    {
+        $advertisements=Advertisement::latest('available_on')
+        ->where('blocked', '=',1)->get();
+
+        return view('advertisements.blocked',compact('advertisements'));
+    }
+
 }
