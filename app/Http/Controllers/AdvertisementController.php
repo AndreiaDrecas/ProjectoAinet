@@ -48,8 +48,6 @@ class AdvertisementController extends Controller
 
     public function show(Advertisement $advertisement)
     {      
-
-
         $user = User::findorfail($advertisement->owner_id);
         $comments = Comment::join('users','comments.user_id','=','users.id')
         ->where('advertisement_id','=',$advertisement->id)
@@ -81,7 +79,22 @@ class AdvertisementController extends Controller
 
     private function syncTags(Advertisement $advertisement, array $tags)
     {
-        $advertisement->tags()->sync($tags);
+        $tagSync = $this->integrityCheckTags($tags);
+        $advertisement->tags()->sync($tagSync);
+    }
+
+    private function integrityCheckTags($tags){
+        $currentTags = array_filter($tags, 'is_numeric');
+        $newTags = array_filter($tags, function($item) {
+            return !is_numeric($item);
+        });
+
+        foreach ($newTags as $newTag) {
+            if ($tag = Tag::create(['name' => $newTag])){
+                $currentTags[] = $tag->id;
+            }
+        }
+        return $currentTags;
     }
 
     private function createAdvertisement(AdvertisementRequest $request)
