@@ -41,7 +41,8 @@
     		@foreach ($advertisements as $advertisement)
     			@if ($advertisement->owner_id == Auth::user()->id)
     				<p>{{ $advertisement->name }}
-    				<a class="btn btn-xs btn-primary" href="{{route('advertisements.show', ['id' => $advertisement->id])}}">show</a>
+    				<a 
+    				class="btn btn-xs btn-primary" href="{{route('advertisements.show', ['id' => $advertisement->id])}}">show</a>
     				</p>
     			@endif
     		@endforeach  

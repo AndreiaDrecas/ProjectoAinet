@@ -30,10 +30,6 @@
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-          @if (Auth::user()->admin == 1)
-            <li><a class="dropdown-item" href="{{ url('/painel') }}">Painel</a></li>
-
-          @endif
           <li><a class="dropdown-item" href="{{ url('/profile') }}">Profile</a></li>
           <li><a class="dropdown-item" href="{{ url('/logout') }}">Logout</a></li>
         </ul>
