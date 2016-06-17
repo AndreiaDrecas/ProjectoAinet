@@ -20,18 +20,11 @@
 <hr>
  <!-- Search bar -->
 <div class="container">
-
-  <div class="row" >
-    <form class="navbar-form center" role="search">
-      {{ Form::open(['route' => ['advertisements.search'], 'method' => 'post', 'class' => 'inline']) }} 
-      <div class="input-group">
-        <input id="search" name="search" type="text" class="form-control" placeholder="Search">
-      </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-        {{Form::close()}}
-      
-  </div>
-    </form>
+  <div class="navbar-form center form-inline" role="search">
+    {{ Form::open(['route' => ['advertisements.search'], 'method' => 'post', 'class' => 'inline']) }} 
+    <input id="search" name="search" type="text" class="form-control" placeholder="Search">
+    <button type="submit" class="btn btn-primary" for="search">Submit</button>
+    {{Form::close()}}
   </div>
 </div>
 <br>
@@ -41,8 +34,8 @@
     @if (Auth::user())
       <div class="container">
         <form class="form-inline">
-          <a class="btn btn-primary" 
-          href="{{url ('advertisements/create')}}">Create Advertisement</a>
+          <p><a class="btn btn-primary" 
+          href="{{url ('advertisements/create')}}">Create Advertisement</a></p>
         </form>
       </div>
     @endif

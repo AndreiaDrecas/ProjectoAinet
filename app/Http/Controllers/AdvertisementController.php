@@ -26,12 +26,17 @@ class AdvertisementController extends Controller
         $advertisements=Advertisement::all();
         $advertisementArray =array();
         foreach ($advertisements as $advertisement) {
-            array_push($advertisementArray,unblockedAdvertisement($advertisement));
+            if ($this->checkUnblockedUser($advertisement)) {
+                array_push($advertisementArray,$advertisement);
+            }
+            
 
         }
-        
-        //$advertisements = Advertisement::latest('available_on')->available()->get();
-        return view('advertisements.list', compact('advertisements'));
+    
+    //$advertisements = Advertisement::latest('available_on')->available()->get();
+
+
+        return view('advertisements.list', ['advertisements' => $advertisementArray]);
     }
 
     public function create()
@@ -144,9 +149,9 @@ class AdvertisementController extends Controller
         return view('advertisements.blocked',compact('advertisements'));
     }
 
-    public function unblockedAdvertisement(Advertisement $advertisements)
+    public function checkUnblockedUser($advertisement)
     {
-        $user=User::findorfail($advertisements->owner_id);
+        $user=User::findorfail($advertisement->owner_id);
         return $user->blocked == 0 ? 1 : 0;
 
     }
