@@ -33,7 +33,7 @@
 </div>
 
 <div>
-  <button type="submit" class="btn btn-primary">Users Products</button>
+  
   <div>
 
     @if (Auth::user())

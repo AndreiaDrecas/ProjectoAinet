@@ -72,7 +72,7 @@ class UserController extends Controller
 
     public function blockedUsers()
     {
-        $users = User::latest('name')
+        $users = User::latest('blocked')
         ->where('blocked', '=',1)->get();
 
         return view('users.blocked', compact('users'));
