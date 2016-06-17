@@ -62,6 +62,7 @@ class AdvertisementController extends Controller
     public function edit(Advertisement $advertisement)
     {
         $tags = Tag::lists('name', 'id');
+        
         return view('advertisements.edit', compact('advertisement','tags'));
     }
 
