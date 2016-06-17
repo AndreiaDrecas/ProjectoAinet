@@ -20,12 +20,12 @@
 <hr>
  <!-- Search bar -->
 <div class="container">
-  <form class="navbar-form center form-inline" role="search">
+  <div class="navbar-form center form-inline" role="search">
     {{ Form::open(['route' => ['advertisements.search'], 'method' => 'post', 'class' => 'inline']) }} 
     <input id="search" name="search" type="text" class="form-control" placeholder="Search">
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" for="search">Submit</button>
     {{Form::close()}}
-  </form>
+  </div>
 </div>
 <br>
 <div>

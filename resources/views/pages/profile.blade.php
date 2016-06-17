@@ -23,7 +23,7 @@
 			No 
 		@endif</p>
 	<p>User created at: {{ $user->created_at }}</p>   
-	@if ($user->id == Auth::user()->id)
+	@if (Auth::user()->id == $user->id)
 		<a class="btn btn-xs btn-primary" href="{{route('users.edit', ['id' => $user->id])}}"><em class="fa fa-pencil"></em></a>
 	@endif         
 

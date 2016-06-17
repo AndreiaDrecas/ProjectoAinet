@@ -24,16 +24,19 @@ class AdvertisementController extends Controller
     public function index()
     {
         $advertisements=Advertisement::all();
-        $advertisement =array();
+        $advertisementArray =array();
         foreach ($advertisements as $advertisement) {
-            array_push($advertisement,unblockedAdvertisement($advertisements));
+            if ($this->checkUnblockedUser($advertisement)) {
+                array_push($advertisementArray,$advertisement);
+            }
+            
+
         }
+    
+    //$advertisements = Advertisement::latest('available_on')->available()->get();
 
-        //$advertisements = Advertisement::latest('available_on')->available()->get();     
 
-        $advertisements = Advertisement::latest('available_on')->available()->get();
-
-        return view('advertisements.list', compact('advertisements'));
+        return view('advertisements.list', ['advertisements' => $advertisementArray]);
     }
 
     public function create()
@@ -60,9 +63,6 @@ class AdvertisementController extends Controller
         ->where('advertisement_id','=',$advertisement->id)
         ->get();
         
-        $comments = Comment::with(['user', 'replies'])
-             ->where('advertisement_id', $advertisement->id)
-            ->get();
 
         return view('advertisements.detail',compact('advertisement', 'comments'));
     }
@@ -150,10 +150,13 @@ class AdvertisementController extends Controller
         return view('advertisements.blocked',compact('advertisements'));
     }
 
-    public function unblockedAdvertisement($advertisements)
+    public function checkUnblockedUser($advertisement)
     {
         $user = User::findorfail($advertisements->owner_id);
         $user->blocked == 0 ? 0 : 1;
+
+        $user=User::findorfail($advertisement->owner_id);
+        return $user->blocked == 0 ? 1 : 0;
     }
 
 }
