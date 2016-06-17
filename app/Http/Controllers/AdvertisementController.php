@@ -27,15 +27,12 @@ class AdvertisementController extends Controller
         $advertisement =array();
         foreach ($advertisements as $advertisement) {
             array_push($advertisement,unblockedAdvertisement($advertisements));
-
-<<<<<<< HEAD
-            }
+        }
 
         //$advertisements = Advertisement::latest('available_on')->available()->get();     
-=======
+
         $advertisements = Advertisement::latest('available_on')->available()->get();
 
->>>>>>> bdcc01c96e0d1866a5020fe56a12fe2ad468f32b
         return view('advertisements.list', compact('advertisements'));
     }
 

@@ -20,27 +20,12 @@
 <hr>
  <!-- Search bar -->
 <div class="container">
-<<<<<<< HEAD
-  <div class="row" >
-    <form class="navbar-form center" role="search">
-      {{ Form::open(['route' => ['advertisements.search'], 'method' => 'post', 'class' => 'inline']) }} 
-      <div class="input-group">
-        <input id="search" name="search" type="text" class="form-control" placeholder="Search">
-      </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-        {{Form::close()}}
-      
-  </div>
-    </form>
-  </div>
-=======
-    <div class="navbar-form center form-inline" role="search">
-      {{ Form::open(['route' => ['advertisements.search'], 'method' => 'post', 'class' => 'inline']) }} 
-      <input id="search" name="search" type="text" class="form-control" placeholder="Search">
-      <button type="submit" class="btn btn-primary" for="search">Submit</button>
-        {{Form::close()}}
-    </div>
->>>>>>> bdcc01c96e0d1866a5020fe56a12fe2ad468f32b
+  <form class="navbar-form center form-inline" role="search">
+    {{ Form::open(['route' => ['advertisements.search'], 'method' => 'post', 'class' => 'inline']) }} 
+    <input id="search" name="search" type="text" class="form-control" placeholder="Search">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    {{Form::close()}}
+  </form>
 </div>
 <br>
 <div>
