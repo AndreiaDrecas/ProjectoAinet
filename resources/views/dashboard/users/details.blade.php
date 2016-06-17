@@ -20,7 +20,8 @@
     <td>{{ $user->created_at }}</td>            
     <td>
         <a class="btn btn-xs btn-primary" href="{{route('users.edit', ['id' => $user->id])}}">Edit</a>
-        <form action="{{route('users.delete', ['id' => $user->id])}}" method="post" class="inline">
+        <form action="{{route('users.delete', ['id' => $user->id])}}" method="post" 
+            class="inline">
             <div class="form-group">
                 <button type="submit" class="btn btn-xs btn-danger">Delete</button>
             </div>
