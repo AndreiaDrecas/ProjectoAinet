@@ -38,6 +38,7 @@
         <div>
           <a class="btn btn-xs btn-primary" href="{{route('advertisements.edit', ['id' => $advertisement->id])}}">Edit Advertisement</a>
         </div> 
+
       @endif
       @if (Auth::user()->isAdmin())
         <br>
@@ -46,6 +47,7 @@
           <button class="btn btn-xs btn-danger" type="submit">Block Advertisement</button>
         @else
           <a class="btn btn-xs btn-success">Blocked Advertisement</a>
+
         @endif
         {{ Form::close()}}
       @endif
@@ -66,7 +68,9 @@
   </div>
   {!! Form::close() !!}
 
+
   @if (count($comments))
+
     @include('advertisements.comments', ['comments' => $comments])
   @endif
 </div>

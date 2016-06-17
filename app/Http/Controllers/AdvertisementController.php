@@ -23,7 +23,6 @@ class AdvertisementController extends Controller
 
     public function index()
     {
-        //return \Auth::user();
 
         $advertisements = Advertisement::latest('available_on')->available()->get();
 
@@ -53,6 +52,11 @@ class AdvertisementController extends Controller
         $comments = Comment::join('users','comments.user_id','=','users.id')
         ->where('advertisement_id','=',$advertisement->id)
         ->get();
+    {      
+        
+        $comments = Comment::with(['user', 'replies'])
+             ->where('advertisement_id', $advertisement->id)
+            ->get();
 
         return view('advertisements.detail',compact('advertisement', 'comments'));
     }
@@ -72,7 +76,8 @@ class AdvertisementController extends Controller
         return redirect('advertisements');
     }
 
-    public function destroy(Advertisement $advertisement){
+    public function destroy(Advertisement $advertisement)
+    {
 
         $advertisement->delete();
 
@@ -82,7 +87,22 @@ class AdvertisementController extends Controller
 
     private function syncTags(Advertisement $advertisement, array $tags)
     {
-        $advertisement->tags()->sync($tags);
+        $tagSync = $this->integrityCheckTags($tags);
+        $advertisement->tags()->sync($tagSync);
+    }
+
+    private function integrityCheckTags($tags){
+        $currentTags = array_filter($tags, 'is_numeric');
+        $newTags = array_filter($tags, function($item) {
+            return !is_numeric($item);
+        });
+
+        foreach ($newTags as $newTag) {
+            if ($tag = Tag::create(['name' => $newTag])) {
+                $currentTags[] = $tag->id;
+            }
+        }
+        return $currentTags;
     }
 
     private function createAdvertisement(AdvertisementRequest $request)
@@ -106,7 +126,7 @@ class AdvertisementController extends Controller
     public function search(Request $request)
     {
         $filter = $request->input('search');
-        $advertisements = Advertisement::whereHas('user', function($query) use($filter){
+        $advertisements = Advertisement::whereHas('user', function($query) use($filter) {
             $query->where('location', 'LIKE', '%' . $filter . '%');
         })
         ->orWhere('name', 'LIKE', '%' . $filter . '%')

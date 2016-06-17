@@ -8,8 +8,12 @@ class Tag extends Model
 {
     public $timestamps = false;
 
+    protected $fillable = [
+        'name'
+     ];
+
     public function advertisements()
     {
-        return $this->belongsToMany('App\Advertisement');
+        return $this->belongsToMany(Advertisement::class);
     }
 }
