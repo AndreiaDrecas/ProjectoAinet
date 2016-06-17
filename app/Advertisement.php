@@ -9,12 +9,12 @@ class Advertisement extends Model
 {
 
     protected $fillable = [
-        'name', 
-        'description', 
-        'price_cents', 
-        'trade_prefs', 
-        'quantity',
-        'available_on'
+    'name', 
+    'description', 
+    'price_cents', 
+    'trade_prefs', 
+    'quantity',
+    'available_on'
     ];
     
     protected $dates = ['available_on'];
@@ -29,8 +29,6 @@ class Advertisement extends Model
         $query->where('available_on','>', Carbon::now());
     }
 
-
-
     public function setAvailableOnAttribute($date)
     {
         $this->attributes['available_on'] = Carbon::parse($date);
@@ -40,11 +38,13 @@ class Advertisement extends Model
     * An Advertisement is owned by a user
     */
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo('App\User', 'owner_id'); //owner_id
     }
 
-    public function tags(){
+    public function tags()
+    {
         return $this->belongsToMany('App\Tag');
     }
 
@@ -53,10 +53,9 @@ class Advertisement extends Model
         return $this->tags->lists('id')->all();
     }
 
-    public function comments(){
-       return $this->hasMany(Comment::class);
+    public function comments()
+    {
+     return $this->hasMany(Comment::class);
     }
 
-   
-    
 }
