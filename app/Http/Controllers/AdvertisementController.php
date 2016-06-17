@@ -24,18 +24,14 @@ class AdvertisementController extends Controller
     public function index()
     {
         $advertisements=Advertisement::all();
-        $advertisement =array();
+        $advertisementArray =array();
         foreach ($advertisements as $advertisement) {
-            array_push($advertisement,unblockedAdvertisement($advertisements));
+            array_push($advertisementArray,unblockedAdvertisement($advertisement));
 
-<<<<<<< HEAD
-            }
-
-        //$advertisements = Advertisement::latest('available_on')->available()->get();     
-=======
-        $advertisements = Advertisement::latest('available_on')->available()->get();
-
->>>>>>> bdcc01c96e0d1866a5020fe56a12fe2ad468f32b
+        }
+        var_dump($advertisementArray);
+        $advertisements = $advertisementArray;
+        //$advertisements = Advertisement::latest('available_on')->available()->get();
         return view('advertisements.list', compact('advertisements'));
     }
 
@@ -62,11 +58,7 @@ class AdvertisementController extends Controller
         $comments = Comment::join('users','comments.user_id','=','users.id')
         ->where('advertisement_id','=',$advertisement->id)
         ->get();
-    {      
         
-        $comments = Comment::with(['user', 'replies'])
-             ->where('advertisement_id', $advertisement->id)
-            ->get();
 
         return view('advertisements.detail',compact('advertisement', 'comments'));
     }
@@ -153,10 +145,11 @@ class AdvertisementController extends Controller
         return view('advertisements.blocked',compact('advertisements'));
     }
 
-    public function unblockedAdvertisement($advertisements)
+    public function unblockedAdvertisement(Advertisement $advertisements)
     {
         $user=User::findorfail($advertisements->owner_id);
-        $user->blocked == 0 ? 0 : 1;
+        return $user->blocked == 0 ? 1 : 0;
+
     }
 
 }
