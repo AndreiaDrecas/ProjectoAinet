@@ -20,41 +20,39 @@ class AdvertisementController extends Controller
     {
         $this->middleware('auth', ['except' => ['index','show','search','blockedAdvertisements']]);
     }
-    
+
     public function index()
     {
         //return \Auth::user();
 
-        $advertisements = Advertisement::latest('available_on')->available()->get();     
+        $advertisements = Advertisement::latest('available_on')->available()->get();
+
         return view('advertisements.list', compact('advertisements'));
     }
 
     public function create()
     {
         $tags = Tag::lists('name', 'id');
+
         return view('advertisements.add', compact('tags'));
     }
 
     public function store(AdvertisementRequest $request)
-    {    
-        
-        $this->createAdvertisement($request);
+    {
 
+        $this->createAdvertisement($request);
         \Session::flash('flash_message', 'Your advertisement has been created!');
-        
+
         return redirect('advertisements');
     }
 
 
     public function show(Advertisement $advertisement)
-    {      
-
-
+    {
         $user = User::findorfail($advertisement->owner_id);
         $comments = Comment::join('users','comments.user_id','=','users.id')
         ->where('advertisement_id','=',$advertisement->id)
         ->get();
-
 
         return view('advertisements.detail',compact('advertisement', 'comments'));
     }
@@ -62,6 +60,7 @@ class AdvertisementController extends Controller
     public function edit(Advertisement $advertisement)
     {
         $tags = Tag::lists('name', 'id');
+
         return view('advertisements.edit', compact('advertisement','tags'));
     }
 
@@ -69,14 +68,16 @@ class AdvertisementController extends Controller
     {
         $advertisement->update($request->all());
         $this->syncTags($advertisement,$request->input('tag_list'));
+
         return redirect('advertisements');
     }
 
     public function destroy(Advertisement $advertisement){
 
         $advertisement->delete();
+
         return redirect('advertisements');
-    } 
+    }
 
 
     private function syncTags(Advertisement $advertisement, array $tags)
@@ -87,7 +88,7 @@ class AdvertisementController extends Controller
     private function createAdvertisement(AdvertisementRequest $request)
     {
         $advertisement = $request->user()->advertisements()->create($request->all());
-        
+
         $this->syncTags($advertisement,$request->input('tag_list'));
 
         return $advertisement;
@@ -110,7 +111,7 @@ class AdvertisementController extends Controller
         })
         ->orWhere('name', 'LIKE', '%' . $filter . '%')
         ->orWhere('description', 'LIKE', '%' . $filter . '%')->distinct()->get();
-        
+
         return view('pages.index', compact('advertisements'));
     }
 

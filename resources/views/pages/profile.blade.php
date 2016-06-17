@@ -1,6 +1,6 @@
 @extends('pages.layouts.backend')
 
-@section('title', 'User Profile')
+@section('title', $user->name)
 
 @section('content')
 
