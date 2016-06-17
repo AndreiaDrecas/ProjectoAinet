@@ -5,8 +5,6 @@
 @section('content')
 
 @if (count($user))
-	
-	<td>{{ $user->email }}</td>
 
 	@if ($user->profile_photo != null)
 		<p>Profile Foto: {{ $user->profile_photo }}</p>
@@ -18,12 +16,13 @@
 		<p>Profile URL: {{ $user->profile_url }}</p>
 		<p>Presentation: {{ $user->presentation }}</p>
 	@endif
-	<p>@if ($user->admin==1) 
+	<p>Administrator:
+		@if ($user->admin==1) 
 			Administrator:Yes 
 		@else 
 			No 
 		@endif</p>
-	<p>{{ $user->created_at }}</p>   
+	<p>User created at: {{ $user->created_at }}</p>   
 	@if ($user->id == Auth::user()->id)
 		<a class="btn btn-xs btn-primary" href="{{route('users.edit', ['id' => $user->id])}}"><em class="fa fa-pencil"></em></a>
 	@endif         
