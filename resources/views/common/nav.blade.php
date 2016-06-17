@@ -21,7 +21,7 @@
     @else
       <div class="dropdown pull-xs-right">
         @if (Auth::user()->admin == 1)
-          <a class="btn btn-success" type="submit" href="{{route('users.blocked')}}">Users List</a>
+          <a class="btn btn-success" type="submit" href="{{route('users.list')}}">Users List</a>
           <a class="btn btn-success" type="submit" href="{{route('users.blocked')}}">Blocked Users</a>
           <a class="btn btn-success" type="submit" href="{{route('advertisements.blocked')}}">Blocked Advertisements</a>
         @endif
