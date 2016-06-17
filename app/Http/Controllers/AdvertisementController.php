@@ -29,8 +29,7 @@ class AdvertisementController extends Controller
             array_push($advertisementArray,unblockedAdvertisement($advertisement));
 
         }
-        var_dump($advertisementArray);
-        $advertisements = $advertisementArray;
+        
         //$advertisements = Advertisement::latest('available_on')->available()->get();
         return view('advertisements.list', compact('advertisements'));
     }
