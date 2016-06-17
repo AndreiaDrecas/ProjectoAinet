@@ -19,7 +19,6 @@ class AdvertisementController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index','show','search']]);
-
     }
     
     public function index()
@@ -52,8 +51,8 @@ class AdvertisementController extends Controller
 
         $user = User::findorfail($advertisement->owner_id);
         $comments = Comment::join('users','comments.user_id','=','users.id')
-            ->where('advertisement_id','=',$advertisement->id)
-            ->get();
+        ->where('advertisement_id','=',$advertisement->id)
+        ->get();
 
         return view('advertisements.detail',compact('advertisement', 'user','comments'));
     }
@@ -97,6 +96,7 @@ class AdvertisementController extends Controller
         $advertisement = Advertisement::findorfail($id);
         $advertisement->blocked = $advertisement->blocked == 1 ? 0 : 1;
         $advertisement->save();
+
         return redirect('advertisements');
     }
 
@@ -111,6 +111,5 @@ class AdvertisementController extends Controller
         
         return view('pages.index', compact('advertisements'));
     }
-
 
 }
