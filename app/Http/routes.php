@@ -37,10 +37,12 @@ Route::post('/users/block/{id}', ['as' => 'users.block', 'uses' =>'UserControlle
 Route::post('/advertisements/block/{id}', ['as' => 'advertisements.block', 'uses' =>'AdvertisementController@block']);
 Route::post('/advertisements/search', ['as' => 'advertisements.search', 'uses' => 'AdvertisementController@search']);
 
+/*sites only accessed by admin*/
 Route::get('blocked/advertisements', ['as' => 'advertisements.blocked', 'uses'=>'AdvertisementController@blockedAdvertisements']);
 Route::get('blocked/users', ['as' => 'users.blocked', 'uses'=>'UserController@blockedUsers']);
 Route::get('users', ['as' => 'users.list', 'uses'=>'UserController@index']);
 
+/*authentication sites*/
 Route::auth();
 
 Route::get('dashboard', 'DashboardController@index');

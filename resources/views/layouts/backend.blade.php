@@ -33,7 +33,6 @@
 </div>
 
 <div>
-  
   <div>
 
     @if (Auth::user())
