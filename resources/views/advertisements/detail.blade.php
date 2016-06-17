@@ -70,7 +70,6 @@
 
 
   @if (count($comments))
-
     @include('advertisements.comments', ['comments' => $comments])
   @endif
 </div>
