@@ -33,8 +33,8 @@
 @endif
 
 <p>               
-    @if (count($advertisements))<br>
-    ADVERTISEMENTS:<br>
+    @if (count($advertisements))
+    <p>ADVERTISEMENTS:</p>
     @foreach ($advertisements as $advertisement)
     @if ($advertisement->owner_id == Auth::user()->id)
     <a class="btn btn-xs btn-primary" href="{{route('advertisements.show', ['id' => $advertisement->id])}}">show</a>{{ $advertisement->name }}<br>
