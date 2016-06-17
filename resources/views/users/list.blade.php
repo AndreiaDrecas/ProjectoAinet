@@ -66,6 +66,5 @@
 @endif
 
 <br></br>
-@include('users.blocked')
 @endsection
 

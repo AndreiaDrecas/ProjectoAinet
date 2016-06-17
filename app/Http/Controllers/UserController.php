@@ -12,7 +12,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('admin',['except' => ['index']]);
+        $this->middleware('admin',['except' => ['index', 'blockedUsers']]);
     }
 
     public function index()
@@ -68,5 +68,13 @@ class UserController extends Controller
         $user->blocked = $user->blocked == 1 ? 0 : 1;
         $user->save();
         return redirect('users');
+    }
+
+    public function blockedUsers()
+    {
+        $users = User::latest('name')
+        ->where('blocked', '=',1)->get();
+
+        return view('users.blocked', compact('users'));
     }
 }

@@ -1,3 +1,10 @@
+@extends('pages.layouts.backend')
+
+@section('title', 'Blocked users')
+
+@section('content')
+
+@if (count($users))
 <div class="col-md-10 col-md-offset-1">
     <div class="panel panel-default panel-table">
         <div class="panel-heading">
@@ -49,4 +56,5 @@
 @endif
 
 @endforeach
+@endif
 

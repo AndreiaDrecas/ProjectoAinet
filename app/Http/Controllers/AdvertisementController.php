@@ -18,7 +18,7 @@ class AdvertisementController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index','show','search','bloqueados']]);
+        $this->middleware('auth', ['except' => ['index','show','search','blockedAdvertisements']]);
     }
     
     public function index()
@@ -114,7 +114,7 @@ class AdvertisementController extends Controller
         return view('pages.index', compact('advertisements'));
     }
 
-    public function bloqueados()
+    public function blockedAdvertisements()
     {
         $advertisements=Advertisement::latest('available_on')
         ->where('blocked', '=',1)->get();

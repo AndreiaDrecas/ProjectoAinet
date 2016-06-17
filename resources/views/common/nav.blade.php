@@ -19,10 +19,11 @@
         <a  class="btn btn-success btn-xs" href="{{url('/register')}}">Register</a>
       </form>
     @else
-     @if (Auth::user()->admin == 1)
-        <a class="btn btn-success" type="submit" href="{{route('advertisements.bloqueados')}}">Blocked Advertisements</a>
-      @endif
       <div class="dropdown pull-xs-right">
+        @if (Auth::user()->admin == 1)
+          <a class="btn btn-success" type="submit" href="{{route('users.blocked')}}">Blocked Users</a>
+          <a class="btn btn-success" type="submit" href="{{route('advertisements.blocked')}}">Blocked Advertisements</a>
+        @endif
         <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           {{ Auth::user()->name }}
           <span class="caret"></span>
