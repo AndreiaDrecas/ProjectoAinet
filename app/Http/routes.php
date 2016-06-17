@@ -36,6 +36,7 @@ Route::get('/', 'PagesController@index');
 Route::post('/users/block/{id}', ['as' => 'users.block', 'uses' =>'UserController@block']);
 Route::post('/advertisements/block/{id}', ['as' => 'advertisements.block', 'uses' =>'AdvertisementController@block']);
 Route::post('/advertisements/search', ['as' => 'advertisements.search', 'uses' => 'AdvertisementController@search']);
+
 Route::get('blocked/advertisements', ['as' => 'advertisements.blocked', 'uses'=>'AdvertisementController@blockedAdvertisements']);
 Route::get('blocked/users', ['as' => 'users.blocked', 'uses'=>'UserController@blockedUsers']);
 
