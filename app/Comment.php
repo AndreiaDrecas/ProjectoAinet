@@ -19,15 +19,18 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function advertisement(){
+    public function advertisement()
+    {
         return $this->belongsTo(Advertisement::class);
     }
     
-    public function parent()  {
+    public function parent()  
+    {
         return $this->belongsTo(Comment::class, 'parent_id');
     }  
 
-    public function replies()  {
+    public function replies()  
+    {
         return $this->hasMany(Comment::class, 'parent_id', 'id');
     }  
 }
