@@ -24,7 +24,7 @@
 </div>
           
             @foreach ($users as $user)
-            @if ($user->admin == 0)
+            @if ($user->admin == 1)
             @if ($user->blocked == 1)
             <tr>
                 <td><a href="profile/{{ $user->id }}">{{ $user->name }} </a></td>

@@ -20,8 +20,8 @@
       </form>
     @else
      @if (Auth::user()->admin == 1)
-        <a class="btn btn-success pull-xs-center"  href="{{url('/advertisements/blocked')}}">Blocked Advertisements</a>
-        @endif
+        <a class="btn btn-success" type="submit" href="{{route('advertisements.bloqueados')}}">Blocked Advertisements</a>
+      @endif
       <div class="dropdown pull-xs-right">
         <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           {{ Auth::user()->name }}
