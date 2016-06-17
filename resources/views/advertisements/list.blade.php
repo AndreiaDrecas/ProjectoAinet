@@ -24,6 +24,7 @@
     </thead>
     <tbody>
         @foreach ($advertisements as $advertisement)
+            @if($advertisement->blocked == 0)
         <tr>
             <td><a href="{{ url('advertisements', $advertisement->id) }}">{{ $advertisement->name }}</a></td>
             <td>{{ $advertisement->description }}</td>             
@@ -43,6 +44,7 @@
                     </div>
                     </td>
                 </tr>
+                @endif
             @endforeach
     </table>
 @else
