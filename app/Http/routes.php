@@ -16,15 +16,15 @@ Route::resource('users','UserController');
 Route::resource('comments','CommentController');
 
 Route::get('profile', [
-    'middleware' => 'auth', 
-    'uses' => 'PagesController@profile'
-    ]);
+	'middleware' => 'auth', 
+	'uses' => 'PagesController@profile'
+	]);
 
 
 Route::get('dashboard', [
-    'middleware' => 'admin', 
-    'uses' => 'DashboardController@index'   
-    ]);
+	'middleware' => 'admin', 
+	'uses' => 'DashboardController@index'   
+	]);
 
 
 Route::get('/', 'PagesController@index');
