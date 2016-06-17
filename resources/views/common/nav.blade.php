@@ -19,19 +19,17 @@
         <a  class="btn btn-success btn-xs" href="{{url('/register')}}">Register</a>
       </form>
     @else
-     @if (Auth::user()->admin == 1)
-        <a class="btn btn-success pull-xs-center"  href="{{url('/advertisements/blocked')}}">Blocked Advertisements</a>
-        @endif
       <div class="dropdown pull-xs-right">
+        @if (Auth::user()->admin == 1)
+          <a class="btn btn-success" type="submit" href="{{route('users.list')}}">Users List</a>
+          <a class="btn btn-success" type="submit" href="{{route('users.blocked')}}">Blocked Users</a>
+          <a class="btn btn-success" type="submit" href="{{route('advertisements.blocked')}}">Blocked Advertisements</a>
+        @endif
         <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           {{ Auth::user()->name }}
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-          @if (Auth::user()->admin == 1)
-            <li><a class="dropdown-item" href="{{ url('/painel') }}">Painel</a></li>
-
-          @endif
           <li><a class="dropdown-item" href="{{ url('/profile') }}">Profile</a></li>
           <li><a class="dropdown-item" href="{{ url('/logout') }}">Logout</a></li>
         </ul>

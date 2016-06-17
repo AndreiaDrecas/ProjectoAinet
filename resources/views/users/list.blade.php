@@ -4,20 +4,9 @@
 
 @section('content')
 
+<h2>Users list</h2>
+<br></br>
 @if (count($users))
-
-<div class="col-md-10 col-md-offset-1">
-    <div class="panel panel-default panel-table">
-        <div class="panel-heading">
-            <div class="row">
-                <div class="col col-xs-6">
-                    <h3 class="panel-title">Users</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="panel-body">
     <table class="table table-striped table-bordered table-list">
         <thead>
@@ -68,6 +57,5 @@
 @endif
 
 <br></br>
-@include('users.blocked')
 @endsection
 

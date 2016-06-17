@@ -33,7 +33,6 @@
 </div>
 
 <div>
-  <button type="submit" class="btn btn-primary">Users Products</button>
   <div>
 
     @if (Auth::user())
@@ -46,7 +45,7 @@
     <div class="container">
       @if (Session::has('flash_message'))
         <div class="alert alert-success"> 
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</ button>{{ Session::get('flash_message') }}</div>
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>{{ Session::get('flash_message') }}</div>
       @endif
 
       @yield('content')
