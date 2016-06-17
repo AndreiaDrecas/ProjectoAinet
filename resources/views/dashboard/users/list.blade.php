@@ -49,7 +49,6 @@
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-xs btn-danger"><em class="fa fa-trash"></em></button>
                                         </div>
-
                                     </form>
                                 </td>
                             </tr>
