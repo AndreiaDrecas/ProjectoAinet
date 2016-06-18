@@ -77,4 +77,17 @@ class UserController extends Controller
 
         return view('users.blocked', compact('users'));
     }
+
+    public function admin(User $user)
+    {
+        if ($user->admin == 1) {
+            $user->where('id',$user->id)->update(['admin' => 0]);
+        }else {
+
+             $user->where('id',$user->id)->update(['admin' => 1]);
+        }
+
+        return redirect('users');
+    }
+
 }
