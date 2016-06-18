@@ -160,7 +160,7 @@ class AdvertisementController extends Controller
 
     public function checkUnblockedUser($advertisement)
     {
-        $user = User::findorfail($advertisements->owner_id);
+        $user = User::findorfail($advertisement->owner_id);
         $user->blocked == 0 ? 0 : 1;
 
         $user=User::findorfail($advertisement->owner_id);
