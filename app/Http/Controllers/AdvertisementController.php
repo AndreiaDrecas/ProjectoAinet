@@ -133,11 +133,11 @@ class AdvertisementController extends Controller
     {
         $filter = $request->input('search');
         $advertisements = Advertisement::whereHas('user', function($query) use($filter) {
-            $query->where('location', 'LIKE', '%' . $filter . '%');
+            $query->where('location', 'LIKE', '%' . $filter . '%')
+            ->orWhere('name', 'LIKE', '%' . $filter . '%');
         })
         ->orWhere('name', 'LIKE', '%' . $filter . '%')
-        ->orWhere('description', 'LIKE', '%' . $filter . '%')->distinct()->get()
-        ->Paginate(2);
+        ->orWhere('description', 'LIKE', '%' . $filter . '%')->distinct()->get();
 
         return view('pages.index', compact('advertisements'));
     }
