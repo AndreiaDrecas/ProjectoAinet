@@ -137,7 +137,8 @@ class AdvertisementController extends Controller
                   
         })
         ->orWhere('name', 'LIKE', '%' . $filter . '%')
-        ->orWhere('description', 'LIKE', '%' . $filter . '%')->distinct()->get();
+        ->orWhere('description', 'LIKE', '%' . $filter . '%')->distinct()->get()
+        ->Paginate(2);
 
         return view('pages.index', compact('advertisements'));
     }
@@ -152,9 +153,11 @@ class AdvertisementController extends Controller
 
     public function checkUnblockedUser($advertisement)
     {
+        $user = User::findorfail($advertisements->owner_id);
+        $user->blocked == 0 ? 0 : 1;
+
         $user=User::findorfail($advertisement->owner_id);
         return $user->blocked == 0 ? 1 : 0;
-
     }
 
 }
