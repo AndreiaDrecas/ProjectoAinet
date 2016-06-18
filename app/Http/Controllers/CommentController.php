@@ -45,7 +45,7 @@ class CommentController extends Controller
 
         \Session::flash('flash_message', 'Your comment has been created!');
 
-        return redirect('advertisements');
+        return back();
     }
 
 
@@ -69,6 +69,7 @@ class CommentController extends Controller
 
     public function destroy(Comment $comment)
     {
+        $comment->replies()->delete();
         $comment->delete();
         return redirect('advertisements');
     }

@@ -19,7 +19,9 @@
 <h1 align="center">Urban Farmers' Market</h1>
 <hr>
  <!-- Search bar -->
+
 <div class="container">
+  <p>Search Product</p>
   <div class="navbar-form center form-inline" role="search">
     {{ Form::open(['route' => ['advertisements.search'], 'method' => 'post', 'class' => 'inline']) }} 
     <input id="search" name="search" type="text" class="form-control" placeholder="Search">

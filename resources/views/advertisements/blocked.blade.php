@@ -23,7 +23,7 @@
             @if (Auth::user()->admin == 1)
                 @if ($advertisement->blocked == 1)
                     <tr>
-                        <td><a href="{{ url('advertisements', $advertisement->id) }}">{{ $advertisement->name }}</  a></td>
+                        <td><a href="{{ url('advertisements', $advertisement->id) }}">{{ $advertisement->name }}</a></td>
                         <td>{{ $advertisement->description }}</td>             
                         <td>{{ $advertisement->created_at }}</td> 
                         <td>{{ $advertisement->owner_id }} </td>  

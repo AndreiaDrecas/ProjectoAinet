@@ -18,7 +18,7 @@ class AdvertisementController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index','show','search','blockedAdvertisements']]);
+        $this->middleware('auth', ['except' => ['index','show','search']]);
     }
 
     public function index()
@@ -36,12 +36,15 @@ class AdvertisementController extends Controller
     //$advertisements = Advertisement::latest('available_on')->available()->get();
 
 
+
         return view('advertisements.list', ['advertisements' => $advertisementArray]);
+
     }
 
     public function create()
     {
-        $tags = Tag::lists('name', 'id');
+
+        $tags = Tag::lists('name', 'id')->where('blocked',0);
 
         return view('advertisements.add', compact('tags'));
     }
@@ -64,6 +67,12 @@ class AdvertisementController extends Controller
         ->get();
         
 
+        $comments = Comment::with(['user', 'replies'])
+             ->where('advertisement_id', $advertisement->id)
+             ->where('parent_id', null)->get();
+
+
+
         return view('advertisements.detail',compact('advertisement', 'comments'));
     }
 
@@ -82,11 +91,10 @@ class AdvertisementController extends Controller
         return redirect('advertisements');
     }
 
-    public function destroy(Advertisement $advertisement)
-    {
 
-        $advertisement->delete();
-
+    public function destroy(Advertisement $advertisement){
+        
+        $advertisement->comments()->delete();
         return redirect('advertisements');
     }
 
@@ -134,7 +142,7 @@ class AdvertisementController extends Controller
         $filter = $request->input('search');
         $advertisements = Advertisement::whereHas('user', function($query) use($filter) {
             $query->where('location', 'LIKE', '%' . $filter . '%')
-            ->orWhere('name', 'LIKE', '%' . $filter . '%');
+            ->orWhere('name', 'LIKE', '%' . $filter . '%'); 
         })
         ->orWhere('name', 'LIKE', '%' . $filter . '%')
         ->orWhere('description', 'LIKE', '%' . $filter . '%')->distinct()->get();
@@ -142,7 +150,7 @@ class AdvertisementController extends Controller
         return view('pages.index', compact('advertisements'));
     }
 
-    public function blockedAdvertisements()
+    public function listblocked()
     {
         $advertisements=Advertisement::latest('available_on')
         ->where('blocked', '=',1)->get();

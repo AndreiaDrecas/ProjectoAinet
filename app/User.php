@@ -44,6 +44,11 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
+    public function bids()
+    {
+        return $this->hasMany('App\User','buyer_id');
+    }
+
     public function isAdmin()
     {
         if ($this->admin == 1)
