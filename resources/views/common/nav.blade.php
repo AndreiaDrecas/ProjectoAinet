@@ -20,6 +20,9 @@
       </form>
     @else
       <div class="dropdown pull-xs-right">
+        @if (isset($count))
+           <a class="btn btn-warning" type="submit" href="{{ url('/bider/list') }}">You have {{ $count }} news bids</a>
+        @endif
         @if (Auth::user()->admin == 1)
           <a class="btn btn-success" type="submit" href="{{route('users.list')}}">Users List</a>
           <a class="btn btn-success" type="submit" href="{{route('users.blocked')}}">Blocked Users</a>

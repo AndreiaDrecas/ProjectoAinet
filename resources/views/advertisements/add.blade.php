@@ -10,7 +10,7 @@
     <h1>New Advertisement</h1>
 	</hr>
 
-	{!! Form::open(['url' => 'advertisements']) !!}
+	{!! Form::open(['url' => 'advertisements', 'files' => 'true']) !!}
 	   @include('advertisements.form', ['submitButtonText' => 'Create Advertisement'])
 	{!! Form::close() !!}
 </div>

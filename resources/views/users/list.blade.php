@@ -21,19 +21,22 @@
         <tbody>
             
             @foreach ($users as $user)
-            @if ($user->blocked == 0)
+            @if ($user->blocked == 0 )
             <tr>
                 <td><a href="profile/{{$user->id}}">{{ $user->name }} </a></td>
                 <td>{{ $user->email }}</td>
                 <th>
-                    {{ Form::open(['route' => ['users.admin',  $user->id], 'method' => 'post', 'class' => 'inline']) }}        
-                    @if ($user->isAdmin())
-                     <a type="submit" class="btn btn-xs btn-success">Admin</a>
-                    @else 
-                    <button type="submit" class="btn btn-xs btn-danger">Admin</button> 
+                    @if ($user->id != Auth::user()->id)
+                        {{ Form::open(['route' => ['users.setAdmin',  $user->id], 'method' => 'post', 'class' => 'inline']) }}        
+                        @if ($user->isAdmin())
+                            <button type="submit" class="btn btn-xs btn-success">Admin</button>
+                        @else 
+                            <button type="submit" class="btn btn-xs btn-danger">Admin</button> 
+                        @endif
+                        {{ Form::close() }}
                     @endif
                 </th>
-                {{ Form::close() }}
+                
                 <td>{{ $user->created_at }}</td>            
                 <td align="center">
                     <a class="btn btn-xs btn-primary" href="{{route('users.edit', ['id' => $user->id])}}"><em class="fa fa-pencil"></em></a>

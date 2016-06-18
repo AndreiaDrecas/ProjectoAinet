@@ -29,7 +29,7 @@ class AdvertisementRequest extends Request
             'price_cents' => 'required',
             'trade_prefs' => 'required',
             'quantity' => 'required',
-            'available_on' => 'required|date',
+            'available_on' => 'required|date'
 
 
         ];

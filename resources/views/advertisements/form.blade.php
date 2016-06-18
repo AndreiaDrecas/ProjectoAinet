@@ -33,6 +33,11 @@
         {!! Form::select('tag_list[]', $tags, null,['id' => 'tag_list', 'class' => 'form-control', 'multiple']) !!}
     </div>
 
+    <div class="form-group">
+        {!! Form::label('photo_path','Upload File:') !!}
+        {!! Form::file('photo_path') !!}
+    </div>
+
     <div class="form-inline">
     {!! Form::submit($submitButtonText,['class' => 'btn btn-primary form-control'] ) !!}
         <a class="btn btn-danger" href="{{url('/')}}">Cancel</a>

@@ -6,12 +6,14 @@ use Illuminate\Support\Facades\Auth;
 use App\Advertisement;
 use App\Tag;
 use App\Comment;
+use App\Media;
 use App\Http\Requests;
 use App\Http\Requests\AdvertisementRequest;
 use Illuminate\Http\Request;
 use Illuminate\HttpResponse;
 use App\User;
 use DB;
+use Illuminate\Support\Facades\File;
 
 class AdvertisementController extends Controller
 {
@@ -29,14 +31,9 @@ class AdvertisementController extends Controller
             if ($this->checkUnblockedUser($advertisement)) {
                 array_push($advertisementArray,$advertisement);
             }
-            
-
         }
     
     //$advertisements = Advertisement::latest('available_on')->available()->get();
-
-
-
         return view('advertisements.list', ['advertisements' => $advertisementArray]);
 
     }
@@ -44,15 +41,25 @@ class AdvertisementController extends Controller
     public function create()
     {
 
-        $tags = Tag::lists('name', 'id')->where('blocked',0);
-
+        $tags = Tag::lists('name', 'id');
         return view('advertisements.add', compact('tags'));
     }
 
     public function store(AdvertisementRequest $request)
     {
 
-        $this->createAdvertisement($request);
+        $advertisement = $this->createAdvertisement($request);
+        if($request->hasFile('int_file')){
+            $file = $request->file('photo_path');
+            $name = $file->getClientOriginalName();
+            $file->move('public/images/', $name);       
+            $media['photo_path'] = $name;
+            $media['advertisement_id'] = $advertisement->id;
+            Media::create($media);
+        }
+
+        
+
         \Session::flash('flash_message', 'Your advertisement has been created!');
 
         return redirect('advertisements');
@@ -95,6 +102,7 @@ class AdvertisementController extends Controller
     public function destroy(Advertisement $advertisement){
         
         $advertisement->comments()->delete();
+        $advertisement->delete();
         return redirect('advertisements');
     }
 
@@ -150,7 +158,7 @@ class AdvertisementController extends Controller
         return view('pages.index', compact('advertisements'));
     }
 
-    public function listblocked()
+    public function blockedAdvertisements()
     {
         $advertisements=Advertisement::latest('available_on')
         ->where('blocked', '=',1)->get();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\BidRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Bid;
 use App\Advertisement;
@@ -22,7 +23,7 @@ class BidController extends Controller
      */
     public function index()
     {
-        var_dump("asd");
+        //
     }
 
     /**
@@ -94,13 +95,34 @@ class BidController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Bid $bid)
     {
-        //
+        
+        $bid->delete();
+        \Session::flash('flash_message', 'You refused the bid!');
+        return back();
     }
 
     public function bidAdvertisement($id){
         $advertisement = Advertisement::findorfail($id);  
         return view('bids.create',compact('advertisement'));
     }
+
+    public function showOwnBid()
+    {
+        $user = Auth::user();
+        if (Auth::user()->admin == 1){
+            $array = Bid::get();
+            return view ('bids.list', compact('array'));
+        }else{
+            $advertisements = Advertisement::where('owner_id',$user->id)->get();
+            $bids = Bid::get();
+            $array = [];
+            foreach ($advertisements as $advertisement)
+                foreach ($bids as $bid)
+                    if ($bid->advertisement_id == $advertisement->id)
+                        array_push($array, $bid);
+            return view ('bids.list', compact('array'));
+        }  
+    }     
 }

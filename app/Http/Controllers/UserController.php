@@ -92,16 +92,13 @@ class UserController extends Controller
         return view('users.blocked', compact('users'));
     }
 
-    public function admin(User $user)
+    public function setAdmin($id)
     {
-        if ($user->admin == 1) {
-            $user->where('id',$user->id)->update(['admin' => 0]);
-        }else {
-
-             $user->where('id',$user->id)->update(['admin' => 1]);
-        }
-
+        $user = User::findorfail($id);
+        $user->admin = 1 ? 0 : 1;
+        $user->save();
         return redirect('users');
+
     }
 
 }

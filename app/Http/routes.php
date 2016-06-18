@@ -16,6 +16,7 @@ Route::resource('users','UserController');
 Route::resource('comments','CommentController');
 Route::resource('bids','BidController');
 
+Route::get('bider/list', 'BidController@showOwnBid');
 
 Route::get('bids/bidAdvertisement/{id}', ['as' => 'bids.bidAdvertisement', 'uses'=>'BidController@bidAdvertisement']);
 
@@ -46,7 +47,7 @@ Route::post('/advertisements/search', ['as' => 'advertisements.search', 'uses' =
 Route::get('blocked/advertisements', ['as' => 'advertisements.blocked', 'uses'=>'AdvertisementController@blockedAdvertisements']);
 Route::get('blocked/users', ['as' => 'users.blocked', 'uses'=>'UserController@blockedUsers']);
 Route::get('users', ['as' => 'users.list', 'uses'=>'UserController@index']);
-Route::post('users', ['as' => 'users.admin', 'uses'=>'UserController@admin']);
+Route::post('users/{id}', ['as' => 'users.setAdmin', 'uses'=>'UserController@setAdmin']);
 
 /*authentication sites*/
 Route::auth();

@@ -38,7 +38,6 @@
                 <a class="btn btn-xs btn-primary" href="{{route('advertisements.edit', ['id' => $advertisement->id])}}">Edit</a>
 
                 {{ Form::open(['route' => ['advertisements.destroy',  $advertisement->id], 'method' => 'delete', 'class' => 'inline']) }}        
-
                     <div class="form-inline">
                         <button type="submit" class="btn btn-xs btn-danger">Delete</button>
                     </div>

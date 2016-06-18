@@ -11,7 +11,7 @@
       @if ($advertisement->blocked == 0)
         <div class="col-sm-3">
           <div class="card">
-            <img class="card-img-top" src="http://www.wikihow.com/images/a/a6/Draw-a-Farmer-Step-4-Version-2.jpg" alt="{{ $advertisement->name }}" width="100%" height="auto">
+            <img class="card-img-top" src="/images/farm.jpg" alt="{{ $advertisement->name }}" width="100%" height="auto">
             <div class="card-block">
               <h4 class="card-title">{{ $advertisement->name }}</h4>
               <p class="card-text">{{ $advertisement->description }}</p>

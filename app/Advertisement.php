@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Advertisement extends Model
 {
 
+
     protected $fillable = [
     'name', 
     'description', 
@@ -57,5 +58,7 @@ class Advertisement extends Model
     {
      return $this->hasMany(Comment::class);
     }
+
+
 
 }

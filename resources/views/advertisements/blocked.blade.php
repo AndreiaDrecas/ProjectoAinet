@@ -48,5 +48,8 @@
             @endif
         @endforeach
     </table>
+@else
+    <p>No Advertisement</p>
 @endif
+    <a class="btn btn-primary"  href="{{ url('advertisements') }}">Show all advertisements</a>
 @endsection

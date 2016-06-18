@@ -43,6 +43,8 @@
             @endif
         @endforeach
     </table>
+@else
+    <p>no User</p>
 @endif
 
 @endsection
