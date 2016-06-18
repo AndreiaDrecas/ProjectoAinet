@@ -24,13 +24,14 @@ class AdvertisementController extends Controller
     public function index()
     {
 
-        $advertisements = Advertisement::latest('available_on')->available()->get();     
+        $advertisements = Advertisement::latest('available_on')->available()->get();  
+           
         return view('advertisements.list', compact('advertisements'));
     }
 
     public function create()
     {
-        $tags = Tag::lists('name', 'id');
+        $tags = Tag::lists('name', 'id')->where('blocked',0);
         return view('advertisements.add', compact('tags'));
     }
 
@@ -70,7 +71,7 @@ class AdvertisementController extends Controller
     }
 
     public function destroy(Advertisement $advertisement){
-
+        $advertisement->comments()->delete();
         $advertisement->delete();
         return redirect('advertisements');
     } 

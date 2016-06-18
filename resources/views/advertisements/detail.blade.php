@@ -34,6 +34,7 @@
       </div>   
     @else
       @if ($advertisement->owner_id == Auth::user()->id || Auth::user()->isAdmin())
+      <a class="btn btn-xs btn-primary" href="{{route('bids.bidAdvertisement', ['advertisement_id' => $advertisement->id])}}">Bid</a>
         <hr>
         <div>
           <a class="btn btn-xs btn-primary" href="{{route('advertisements.edit', ['id' => $advertisement->id])}}">Edit Advertisement</a>

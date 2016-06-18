@@ -69,6 +69,7 @@ class CommentController extends Controller
 
     public function destroy(Comment $comment)
     {
+        $comment->replies()->delete();
         $comment->delete();
         return redirect('advertisements');
     }

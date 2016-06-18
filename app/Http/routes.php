@@ -14,6 +14,11 @@
 Route::resource('advertisements','AdvertisementController');
 Route::resource('users','UserController');
 Route::resource('comments','CommentController');
+Route::resource('bids','BidController');
+
+
+Route::get('bids/bidAdvertisement/{id}', ['as' => 'bids.bidAdvertisement', 'uses'=>'BidController@bidAdvertisement']);
+
 
 Route::get('profile', [
 	'middleware' => 'auth', 

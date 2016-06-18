@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
+use App\Advertisement;
 
 
 class UserController extends Controller
@@ -45,15 +46,29 @@ class UserController extends Controller
         return redirect('dashboard/users');
     }
 
-    public function show($id)
+    public function show(User $user)
     {
-        $user = User::findorfail($id);
+        
         return view('users.details', compact('user'));
     }
 
-    public function destroy($id)
+    public function update(User $user, Request $request)
     {
-        User::destroy($id);
+        $user->update($request->all());
+        
+        return redirect('users');
+    }
+
+    public function destroy(User $user)
+    { 
+        
+        
+        $user->comments()->delete();
+        $user->advertisements()->delete();
+        $user->delete();
+        
+        \Session::flash('message','User was deleted');
+
         return redirect('users');
     }    
 
@@ -62,9 +77,8 @@ class UserController extends Controller
         return view('users.edit', compact('user'));
     }
 
-    public function block($id)
+    public function block(User $user)
     {
-        $user = User::findorfail($id);
         $user->blocked = $user->blocked == 1 ? 0 : 1;
         $user->save();
         return redirect('users');

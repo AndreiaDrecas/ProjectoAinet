@@ -42,6 +42,7 @@
                     <div class="form-inline">
                         <button type="submit" class="btn btn-xs btn-danger">Delete</button>
                     </div>
+                     {{ Form::close() }}
                     </td>
                 </tr>
                 @endif
