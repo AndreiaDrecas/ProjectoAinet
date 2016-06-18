@@ -33,7 +33,10 @@ class AdvertisementController extends Controller
             }
         }
     
-    //$advertisements = Advertisement::latest('available_on')->available()->get();
+
+        //$advertisements = Advertisement::latest('available_on')->available()->get();
+
+
         return view('advertisements.list', ['advertisements' => $advertisementArray]);
 
     }
@@ -171,7 +174,7 @@ class AdvertisementController extends Controller
         $user = User::findorfail($advertisement->owner_id);
         $user->blocked == 0 ? 0 : 1;
 
-        $user=User::findorfail($advertisement->owner_id);
+        $user = User::findorfail($advertisement->owner_id);
         return $user->blocked == 0 ? 1 : 0;
     }
 
