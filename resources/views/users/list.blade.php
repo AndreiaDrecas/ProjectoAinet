@@ -19,16 +19,21 @@
             </tr>
         </thead>
         <tbody>
+            
             @foreach ($users as $user)
             @if ($user->blocked == 0)
             <tr>
-
                 <td><a href="profile/{{$user->id}}">{{ $user->name }} </a></td>
-
                 <td>{{ $user->email }}</td>
                 <th>
-                    @if ($user->admin==1) Yes @else No @endif
+                    {{ Form::open(['route' => ['users.admin',  $user->id], 'method' => 'post', 'class' => 'inline']) }}        
+                    @if ($user->isAdmin())
+                     <a type="submit" class="btn btn-xs btn-success">Admin</a>
+                    @else 
+                    <button type="submit" class="btn btn-xs btn-danger">Admin</button> 
+                    @endif
                 </th>
+                {{ Form::close() }}
                 <td>{{ $user->created_at }}</td>            
                 <td align="center">
                     <a class="btn btn-xs btn-primary" href="{{route('users.edit', ['id' => $user->id])}}"><em class="fa fa-pencil"></em></a>
@@ -51,11 +56,9 @@
     <a class="btn btn-primary" href="{{route('users.create')}}">Create user</a>
 </div>
 
-
 @else
 <h2>No users found</h2>
 @endif
-
 <br></br>
 @endsection
 

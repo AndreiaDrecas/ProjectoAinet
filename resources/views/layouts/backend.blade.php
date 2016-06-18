@@ -10,37 +10,34 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
   <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
-
 </head>
 <body>
 
- <!-- Nav Bar -->
- @include('common.nav')
+<!-- Nav Bar -->
+@include('common.nav')
 
-<h1 align="center">URBAN FARMERS' MARKET</h1>
+<h1 align="center">Urban Farmers' Market</h1>
+<hr>
  <!-- Search bar -->
 <div class="container">
-  <div class="row" >
-    <div class="navbar-form center" role="search">
-      {{ Form::open(['route' => ['advertisements.search'], 'method' => 'post', 'class' => 'inline']) }} 
-      <div class="input">
-        <input id="search" name="search" type="text" class="form-control" placeholder="Search">
-        <button type="submit" class="btn btn-primary" for="search">Submit</button>
-        {{Form::close()}}
-      </div>
-    </div>
+  <div class="navbar-form center form-inline" role="search">
+    {{ Form::open(['route' => ['advertisements.search'], 'method' => 'post', 'class' => 'inline']) }} 
+    <input id="search" name="search" type="text" class="form-control" placeholder="Search">
+    <button type="submit" class="btn btn-primary" for="search">Submit</button>
+    {{Form::close()}}
   </div>
 </div>
-
+<br>
 <div>
   <div>
 
     @if (Auth::user())
-    <div class="container">
-      <form class="form-inline">
-        <a class="btn btn-primary" href="{{url ('advertisements/create')}}">Create Advertisement</a>
-      </form>
-    </div>
+      <div class="container">
+        <form class="form-inline">
+          <p><a class="btn btn-primary" 
+          href="{{url ('advertisements/create')}}">Create Advertisement</a></p>
+        </form>
+      </div>
     @endif
     <div class="container">
       @if (Session::has('flash_message'))

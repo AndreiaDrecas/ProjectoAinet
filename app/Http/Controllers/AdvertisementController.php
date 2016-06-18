@@ -20,38 +20,57 @@ class AdvertisementController extends Controller
     {
         $this->middleware('auth', ['except' => ['index','show','search']]);
     }
-    
+
     public function index()
     {
+        $advertisements=Advertisement::all();
+        $advertisementArray =array();
+        foreach ($advertisements as $advertisement) {
+            if ($this->checkUnblockedUser($advertisement)) {
+                array_push($advertisementArray,$advertisement);
+            }
+            
 
-        $advertisements = Advertisement::latest('available_on')->available()->get();  
-           
-        return view('advertisements.list', compact('advertisements'));
+        }
+    
+    //$advertisements = Advertisement::latest('available_on')->available()->get();
+
+
+
+        return view('advertisements.list', ['advertisements' => $advertisementArray]);
+
     }
 
     public function create()
     {
+
         $tags = Tag::lists('name', 'id')->where('blocked',0);
+
         return view('advertisements.add', compact('tags'));
     }
 
     public function store(AdvertisementRequest $request)
-    {    
-        
-        $this->createAdvertisement($request);
+    {
 
+        $this->createAdvertisement($request);
         \Session::flash('flash_message', 'Your advertisement has been created!');
-        
+
         return redirect('advertisements');
     }
 
 
     public function show(Advertisement $advertisement)
-    {      
+    {
+        $user = User::findorfail($advertisement->owner_id);
+        $comments = Comment::join('users','comments.user_id','=','users.id')
+        ->where('advertisement_id','=',$advertisement->id)
+        ->get();
         
+
         $comments = Comment::with(['user', 'replies'])
              ->where('advertisement_id', $advertisement->id)
              ->where('parent_id', null)->get();
+
 
 
         return view('advertisements.detail',compact('advertisement', 'comments'));
@@ -60,6 +79,7 @@ class AdvertisementController extends Controller
     public function edit(Advertisement $advertisement)
     {
         $tags = Tag::lists('name', 'id');
+
         return view('advertisements.edit', compact('advertisement','tags'));
     }
 
@@ -67,14 +87,16 @@ class AdvertisementController extends Controller
     {
         $advertisement->update($request->all());
         $this->syncTags($advertisement,$request->input('tag_list'));
+
         return redirect('advertisements');
     }
 
+
     public function destroy(Advertisement $advertisement){
+        
         $advertisement->comments()->delete();
-        $advertisement->delete();
         return redirect('advertisements');
-    } 
+    }
 
 
     private function syncTags(Advertisement $advertisement, array $tags)
@@ -90,7 +112,7 @@ class AdvertisementController extends Controller
         });
 
         foreach ($newTags as $newTag) {
-            if ($tag = Tag::create(['name' => $newTag])){
+            if ($tag = Tag::create(['name' => $newTag])) {
                 $currentTags[] = $tag->id;
             }
         }
@@ -100,7 +122,7 @@ class AdvertisementController extends Controller
     private function createAdvertisement(AdvertisementRequest $request)
     {
         $advertisement = $request->user()->advertisements()->create($request->all());
-        
+
         $this->syncTags($advertisement,$request->input('tag_list'));
 
         return $advertisement;
@@ -118,12 +140,14 @@ class AdvertisementController extends Controller
     public function search(Request $request)
     {
         $filter = $request->input('search');
-        $advertisements = Advertisement::whereHas('user', function($query) use($filter){
+        $advertisements = Advertisement::whereHas('user', function($query) use($filter) {
             $query->where('location', 'LIKE', '%' . $filter . '%');
+                  
         })
         ->orWhere('name', 'LIKE', '%' . $filter . '%')
-        ->orWhere('description', 'LIKE', '%' . $filter . '%')->distinct()->get();
-        
+        ->orWhere('description', 'LIKE', '%' . $filter . '%')->distinct()->get()
+        ->Paginate(2);
+
         return view('pages.index', compact('advertisements'));
     }
 
@@ -133,6 +157,15 @@ class AdvertisementController extends Controller
         ->where('blocked', '=',1)->get();
 
         return view('advertisements.blocked',compact('advertisements'));
+    }
+
+    public function checkUnblockedUser($advertisement)
+    {
+        $user = User::findorfail($advertisements->owner_id);
+        $user->blocked == 0 ? 0 : 1;
+
+        $user=User::findorfail($advertisement->owner_id);
+        return $user->blocked == 0 ? 1 : 0;
     }
 
 }

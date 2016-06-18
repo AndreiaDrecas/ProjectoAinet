@@ -18,7 +18,7 @@
     <p>Price: {{ $advertisement->price_cents }}</p>
 
     <p>Product created at: {{ $advertisement->available_on }}</p>
-    <hr>
+    <br>
     <p><h4>Details of the seller</h4></p>
 
     <p>Name: {{ $advertisement->user->name }}</p>
@@ -28,21 +28,23 @@
     @endif
 
     @if ($advertisement->owner_id == Auth::guest())
-      <hr>
+      <br>
       <div>
         <a class="btn btn-xs btn-primary" href="{{route('advertisements.edit', ['id' => $advertisement->id])}}">Edit Advertisement</a>
       </div>   
     @else
       @if ($advertisement->owner_id == Auth::user()->id || Auth::user()->isAdmin())
+
       <a class="btn btn-xs btn-primary" href="{{route('bids.bidAdvertisement', ['advertisement_id' => $advertisement->id])}}">Bid</a>
         <hr>
+
         <div>
           <a class="btn btn-xs btn-primary" href="{{route('advertisements.edit', ['id' => $advertisement->id])}}">Edit Advertisement</a>
         </div> 
 
       @endif
       @if (Auth::user()->isAdmin())
-        <hr>
+        <br>
         {{ Form::open(['route' => ['advertisements.block',  $advertisement->id], 'method' => 'post', 'class' => 'inline']) }}   
         @if ($advertisement->blocked == 0)
           <button class="btn btn-xs btn-danger" type="submit">Block Advertisement</button>
@@ -70,7 +72,6 @@
 
 
   @if (count($comments))
-
     @include('advertisements.comments', ['comments' => $comments])
   @endif
 </div>
