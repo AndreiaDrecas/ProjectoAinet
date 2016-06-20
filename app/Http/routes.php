@@ -20,6 +20,7 @@ Route::get('bider/list', 'BidController@showOwnBid');
 
 Route::get('bids/bidAdvertisement/{id}', ['as' => 'bids.bidAdvertisement', 'uses'=>'BidController@bidAdvertisement']);
 
+Route::get('tags', 'TagController@index');
 
 Route::get('profile', [
 	'middleware' => 'auth', 
@@ -48,6 +49,8 @@ Route::get('blocked/advertisements', ['as' => 'advertisements.blocked', 'uses'=>
 Route::get('blocked/users', ['as' => 'users.blocked', 'uses'=>'UserController@blockedUsers']);
 Route::get('users', ['as' => 'users.list', 'uses'=>'UserController@index']);
 Route::post('users/{id}', ['as' => 'users.setAdmin', 'uses'=>'UserController@setAdmin']);
+
+Route::post('tags/{id}', ['as' => 'tags.block', 'uses'=>'TagController@block']);
 
 /*authentication sites*/
 Route::auth();
